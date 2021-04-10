@@ -6,10 +6,11 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.states.GameStateManager;
 import com.mygdx.game.states.StartMenuState;
+import com.mygdx.game.states.graphics.StartAnimation;
 
 public class Mindgames extends ApplicationAdapter {
-	public static final int width = 2330;
-	public static final int height = 1080;
+	public static int width;
+	public static int height;
 	public static final String title = "Mind games";
 
 
@@ -21,12 +22,14 @@ public class Mindgames extends ApplicationAdapter {
 
 	@Override
 	public void create () {
-
+		Mindgames.width =Gdx.app.getGraphics().getWidth();
+		Mindgames.height =  Gdx.app.getGraphics().getHeight();
 		batch = new SpriteBatch();
 		gms = new GameStateManager();
 
 		Gdx.gl.glClearColor(.5f, .7f, .9f, 1);
 
+//		gms.push(new StartAnimation(gms));
 		gms.push(new StartMenuState(gms));
 	}
 

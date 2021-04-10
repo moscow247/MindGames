@@ -5,6 +5,7 @@ import com.mygdx.game.Mindgames;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class Go {
     private int height = Mindgames.height;
     private int width = Mindgames.width;
@@ -39,12 +40,12 @@ public class Go {
     }
 
     private static void whatIsBlock(){
-        blocks.put(0, new int[]{2600, 900});
-        blocks.put(1, new int[]{1150, 350, 1375, 1080});
-        blocks.put(2, new int[]{1300, 350, 1630, 450});
-        blocks.put(3, new int[]{2600, 50});
-        blocks.put(4, new int[]{0, 0, 50, 1080});
-        blocks.put(5, new int[]{2025, 0, 2335, 1080});
+        blocks.put(0, new int[]{Mindgames.width+100, (int) (Mindgames.height*0.83)});
+        blocks.put(1, new int[]{(int) (Mindgames.width*0.48), (int) (Mindgames.height*0.32407), (int) (Mindgames.width*0.590129), Mindgames.height});
+        blocks.put(2, new int[]{(int) (Mindgames.width*0.55794), (int) (Mindgames.height*0.3241), (int) (Mindgames.width*0.699571), (int) (Mindgames.height*0.45)});
+        blocks.put(3, new int[]{Mindgames.width, (int) (Mindgames.height*0.04629)});
+        blocks.put(4, new int[]{0, 0, (int) (Mindgames.width*0.0214592), Mindgames.height});
+        blocks.put(5, new int[]{(int) (Mindgames.width*0.869099), 0, Mindgames.width, Mindgames.height});
     }
 
 }
