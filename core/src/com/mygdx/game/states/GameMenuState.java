@@ -36,12 +36,6 @@ public class GameMenuState extends State {
         });
     }
 
-
-    @Override
-    public void dispose() {
-        background.dispose();
-    }
-
     @Override
     public void update(float dt) {
         handleInput();
@@ -53,5 +47,10 @@ public class GameMenuState extends State {
         sb.draw(background, 0, 0, Mindgames.width, Mindgames.height );
         sb.draw(buttonFirstLvl, 300, 450);
         sb.end();
+    }
+
+    @Override
+    public void dispose() {
+        background.dispose();
     }
 }

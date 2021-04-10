@@ -37,7 +37,9 @@ public class lvl{
             case("GameMenuState"):
                 GameMenuState.background = new Texture(roomsAndData.get(nameOfRoom)[0]);
                 GameMenuState.buttonFirstLvl = new Texture(roomsAndData.get(nameOfRoom)[1]);
-
+                break;
+            case("StartAnimation"):
+                StartAnimation.logo = new Texture(roomsAndData.get(nameOfRoom)[0]);
         }
     }
 
@@ -46,6 +48,7 @@ public class lvl{
                 "backgroundsAndOther/ButtonProfiles.png", "backgroundsAndOther/buttonStart.png"});
         roomsAndData.put("GameState", new String[]{"backgroundsAndOther/roomOne.jpg", "gg.png"});
         roomsAndData.put("GameMenuState", new String[]{"backgroundsAndOther/backgroundStart.jpg", "backgroundsAndOther/btnlvlone.png"});
+        roomsAndData.put("StartAnimation", new String[]{"backgroundsAndOther/logo.jpg"});
     }
 
 //    private

@@ -29,8 +29,8 @@ public class Mindgames extends ApplicationAdapter {
 
 		Gdx.gl.glClearColor(.5f, .7f, .9f, 1);
 
-//		gms.push(new StartAnimation(gms));
-		gms.push(new StartMenuState(gms));
+		gms.push(new StartAnimation(gms));
+//		gms.push(new StartMenuState(gms));
 	}
 
 	@Override
