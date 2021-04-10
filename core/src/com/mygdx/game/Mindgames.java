@@ -22,7 +22,7 @@ public class Mindgames extends ApplicationAdapter {
 
 	@Override
 	public void create () {
-		Mindgames.width =Gdx.app.getGraphics().getWidth();
+		Mindgames.width = Gdx.app.getGraphics().getWidth();
 		Mindgames.height =  Gdx.app.getGraphics().getHeight();
 		batch = new SpriteBatch();
 		gms = new GameStateManager();
