@@ -10,8 +10,8 @@ import com.mygdx.game.states.graphics.lvl;
 
 
 public class GameState extends State {
-    public static Texture img;
-    public static People me;
+    public static Texture texture;
+    private People me = new People();
     public static Texture backgroundRoom;
     private int numberOfRoom;
 //    private int currentX=100;
@@ -21,7 +21,7 @@ public class GameState extends State {
         super(gms);
         this.numberOfRoom = numberOfRoom;
         lvl.whatsAboutGraphic("GameState");
-        me.setImg(this.img);
+        me.setImg(texture);
         me.setCurX(100);
         me.setCurY(500);
     }
@@ -57,14 +57,14 @@ public class GameState extends State {
     public void render(SpriteBatch sb) {
         sb.begin();
         sb.draw(backgroundRoom, 0, 0, Mindgames.width, Mindgames.height);
-        sb.draw(img, me.getCurX(), me.getCurY(), Mindgames.width/10, Mindgames.height/7);
+        sb.draw(texture, me.getCurX(), me.getCurY(), Mindgames.width/10, Mindgames.height/7);
         sb.end();
 
     }
 
     @Override
     public void dispose () {
-        img.dispose();
+        texture.dispose();
         backgroundRoom.dispose();
     }
 }

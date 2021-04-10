@@ -26,7 +26,7 @@ public class lvl{
         switch (nameOfRoom){
             case ("GameState"):
                 GameState.backgroundRoom = new Texture(roomsAndData.get(nameOfRoom)[0]);
-                GameState.img = new Texture(roomsAndData.get(nameOfRoom)[1]);
+                GameState.texture = new Texture(roomsAndData.get(nameOfRoom)[1]);
                 break;
             case ("StartMenuState"):
                 StartMenuState.background = new Texture(roomsAndData.get(nameOfRoom)[1]);
