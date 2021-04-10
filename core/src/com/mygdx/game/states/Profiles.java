@@ -5,6 +5,7 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.Mindgames;
+import com.mygdx.game.states.game.GameStateManager;
 
 public class Profiles extends State{
 

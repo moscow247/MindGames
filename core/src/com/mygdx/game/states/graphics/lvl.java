@@ -1,8 +1,8 @@
 package com.mygdx.game.states.graphics;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.mygdx.game.states.GameMenuState;
-import com.mygdx.game.states.GameState;
+import com.mygdx.game.states.game.GameMenuState;
+import com.mygdx.game.states.game.GameState;
 import com.mygdx.game.states.StartMenuState;
 
 import java.util.ArrayList;
@@ -51,5 +51,4 @@ public class lvl{
         roomsAndData.put("StartAnimation", new String[]{"backgroundsAndOther/logo.jpg"});
     }
 
-//    private
 }

@@ -5,7 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.Mindgames;
-import com.mygdx.game.states.GameStateManager;
+import com.mygdx.game.states.game.GameStateManager;
 import com.mygdx.game.states.StartMenuState;
 import com.mygdx.game.states.State;
 

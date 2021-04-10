@@ -5,6 +5,17 @@ import com.badlogic.gdx.graphics.Texture;
 public class People {
     protected int curX, curY;
     protected Texture img;
+    protected boolean isBusy;
+
+
+    public boolean isBusy() {
+        return isBusy;
+    }
+
+    public void setBusy(boolean busy) {
+        isBusy = busy;
+    }
+
 
     public void setCurX(int curX) {
         this.curX = curX;

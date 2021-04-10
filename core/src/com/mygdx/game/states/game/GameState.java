@@ -1,10 +1,12 @@
-package com.mygdx.game.states;
+package com.mygdx.game.states.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.Mindgames;
+import com.mygdx.game.states.People;
+import com.mygdx.game.states.State;
 import com.mygdx.game.states.graphics.go.Go;
 import com.mygdx.game.states.graphics.lvl;
 
@@ -14,8 +16,7 @@ public class GameState extends State {
     private People me = new People();
     public static Texture backgroundRoom;
     private int numberOfRoom;
-//    private int currentX=100;
-//    private int currentY =100;
+
 
     public GameState(GameStateManager gms, int numberOfRoom) {
         super(gms);

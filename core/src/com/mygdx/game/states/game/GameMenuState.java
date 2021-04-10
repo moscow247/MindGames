@@ -1,15 +1,13 @@
-package com.mygdx.game.states;
+package com.mygdx.game.states.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.Mindgames;
-import com.mygdx.game.states.graphics.go.Go;
+import com.mygdx.game.states.StartMenuState;
+import com.mygdx.game.states.State;
 import com.mygdx.game.states.graphics.lvl;
-
-import static com.mygdx.game.states.StartMenuState.buttonProfiles;
-import static com.mygdx.game.states.StartMenuState.playButton;
 
 public class GameMenuState extends State {
     public static Texture background, buttonFirstLvl;

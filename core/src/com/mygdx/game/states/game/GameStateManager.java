@@ -1,6 +1,7 @@
-package com.mygdx.game.states;
+package com.mygdx.game.states.game;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.game.states.State;
 
 import java.util.Stack;
 
