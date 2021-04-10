@@ -3,9 +3,21 @@ package com.mygdx.game.states;
 import com.badlogic.gdx.graphics.Texture;
 
 public class People {
-    protected int curX, curY;
-    protected Texture img;
-    protected boolean isBusy;
+    private int curX;
+    private int curY;
+    private int speed;
+    private Texture img;
+    private boolean isBusy;
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+
 
 
     public boolean isBusy() {

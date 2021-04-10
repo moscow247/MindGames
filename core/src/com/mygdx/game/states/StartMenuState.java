@@ -3,21 +3,25 @@ package com.mygdx.game.states;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.Mindgames;
-import com.mygdx.game.states.game.GameMenuState;
+import com.mygdx.game.states.game.GameMenu;
 import com.mygdx.game.states.game.GameStateManager;
 import com.mygdx.game.states.graphics.lvl;
 //import com.sun.xml.internal.ws.handler.HandlerException;
 
 public class StartMenuState extends State {
-
+    private Music music;
     public static Texture background, playButton, buttonProfiles, title;
 
     public StartMenuState(GameStateManager gms) {
         super(gms);
         lvl.whatsAboutGraphic("StartMenuState");
+        music = Gdx.audio.newMusic(Gdx.files.internal("music/music.mp3"));
+        music.setLooping(true);
+        music.play();
     }
 
     @Override
@@ -26,7 +30,7 @@ public class StartMenuState extends State {
                 public boolean touchDown(int x,int y,int pointer,int button) {
                     if(x<(4*(Mindgames.width /6) + playButton.getHeight()) && x>(3 * (Mindgames.width / 4) - playButton.getWidth()) ) {
                         if(y<(Mindgames.height/2 + playButton.getHeight()/2) && y>(Mindgames.height/2-playButton.getHeight()/2)){
-                            gms.set(new GameMenuState(gms));
+                            gms.set(new GameMenu(gms));
                         }
                     }
 
@@ -66,6 +70,7 @@ public class StartMenuState extends State {
         buttonProfiles.dispose();
         background.dispose();
         playButton.dispose();
+        music.dispose();
 
     }
 }

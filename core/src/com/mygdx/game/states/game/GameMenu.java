@@ -9,11 +9,11 @@ import com.mygdx.game.states.StartMenuState;
 import com.mygdx.game.states.State;
 import com.mygdx.game.states.graphics.lvl;
 
-public class GameMenuState extends State {
+public class GameMenu extends State {
     public static Texture background, buttonFirstLvl;
 
 
-    public GameMenuState(GameStateManager gms) {
+    public GameMenu(GameStateManager gms) {
         super(gms);
         lvl.whatsAboutGraphic("GameMenuState");
     }
@@ -26,7 +26,7 @@ public class GameMenuState extends State {
 
                 if(x>300 && x<450 && y>450 && y<600){
                     gms.push(new GameState(gms, 1));
-                }else if(y> (Mindgames.height*0.9) && x<(Mindgames.width*0.022)){
+                }else if(y< (Mindgames.height*0.3) && x<(Mindgames.width*0.05)){
                     gms.set(new StartMenuState(gms));
                 }
                 return false;
@@ -50,5 +50,6 @@ public class GameMenuState extends State {
     @Override
     public void dispose() {
         background.dispose();
+
     }
 }

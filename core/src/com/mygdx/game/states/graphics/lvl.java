@@ -1,7 +1,7 @@
 package com.mygdx.game.states.graphics;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.mygdx.game.states.game.GameMenuState;
+import com.mygdx.game.states.game.GameMenu;
 import com.mygdx.game.states.game.GameState;
 import com.mygdx.game.states.StartMenuState;
 
@@ -35,8 +35,8 @@ public class lvl{
                 StartMenuState.title = new Texture(roomsAndData.get(nameOfRoom)[0]);
                 break;
             case("GameMenuState"):
-                GameMenuState.background = new Texture(roomsAndData.get(nameOfRoom)[0]);
-                GameMenuState.buttonFirstLvl = new Texture(roomsAndData.get(nameOfRoom)[1]);
+                GameMenu.background = new Texture(roomsAndData.get(nameOfRoom)[0]);
+                GameMenu.buttonFirstLvl = new Texture(roomsAndData.get(nameOfRoom)[1]);
                 break;
             case("StartAnimation"):
                 StartAnimation.logo = new Texture(roomsAndData.get(nameOfRoom)[0]);

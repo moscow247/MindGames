@@ -2,6 +2,7 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.states.game.GameStateManager;
@@ -30,6 +31,7 @@ public class Mindgames extends ApplicationAdapter {
 
 		gms.push(new StartAnimation(gms));
 //		gms.push(new StartMenuState(gms));
+
 	}
 
 	@Override
@@ -43,6 +45,6 @@ public class Mindgames extends ApplicationAdapter {
 
 	@Override
 	public void dispose () {
-
+		batch.dispose();
 	}
 }
