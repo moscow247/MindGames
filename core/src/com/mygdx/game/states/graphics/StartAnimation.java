@@ -9,7 +9,6 @@ import com.mygdx.game.states.GameStateManager;
 import com.mygdx.game.states.StartMenuState;
 import com.mygdx.game.states.State;
 
-import sun.misc.MetaIndex;
 
 public class StartAnimation  extends State {
     public static Texture logo;

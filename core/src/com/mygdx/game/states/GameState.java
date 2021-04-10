@@ -11,6 +11,7 @@ import com.mygdx.game.states.graphics.lvl;
 
 public class GameState extends State {
     public static Texture img;
+    public static People me;
     public static Texture backgroundRoom;
     private int numberOfRoom;
 //    private int currentX=100;
@@ -20,6 +21,9 @@ public class GameState extends State {
         super(gms);
         this.numberOfRoom = numberOfRoom;
         lvl.whatsAboutGraphic("GameState");
+        me.setImg(this.img);
+        me.setCurX(100);
+        me.setCurY(500);
     }
 
     @Override
@@ -28,13 +32,13 @@ public class GameState extends State {
             public boolean touchDown(int x,int y,int pointer,int button) {
 
                 if (x > Mindgames.width / 4 && x < Mindgames.width /2) {
-                    Go.letsgo(50, 0, numberOfRoom);
+                    Go.letsgo(50, 0, numberOfRoom, me);
                 }else if(x < Mindgames.width / 4  && !((y>(int) (Mindgames.height*0.12)) && (x<(Mindgames.width*0.0214592275)))){
-                    Go.letsgo(-50, 0, numberOfRoom);
+                    Go.letsgo(-50, 0, numberOfRoom, me);
                 }else if(y> Mindgames.height/2&& x>Mindgames.width/2){
-                    Go.letsgo(0, -50, numberOfRoom);
+                    Go.letsgo(0, -50, numberOfRoom, me);
                 }else if(y<Mindgames.height/2 && x>Mindgames.width/2) {
-                    Go.letsgo(0, 50, numberOfRoom);
+                    Go.letsgo(0, 50, numberOfRoom, me);
                 }else if(y> (Mindgames.height*0.9) && x<(Mindgames.width*0.022)){
                     gms.set(new GameMenuState(gms));
                 }
@@ -53,7 +57,7 @@ public class GameState extends State {
     public void render(SpriteBatch sb) {
         sb.begin();
         sb.draw(backgroundRoom, 0, 0, Mindgames.width, Mindgames.height);
-        sb.draw(img, Go.currentX, Go.currentY, Mindgames.width/10, Mindgames.height/7);
+        sb.draw(img, me.getCurX(), me.getCurY(), Mindgames.width/10, Mindgames.height/7);
         sb.end();
 
     }

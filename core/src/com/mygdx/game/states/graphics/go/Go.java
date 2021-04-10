@@ -1,6 +1,7 @@
 package com.mygdx.game.states.graphics.go;
 
 import com.mygdx.game.Mindgames;
+import com.mygdx.game.states.People;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,8 +10,7 @@ import java.util.Map;
 public class Go {
     private int height = Mindgames.height;
     private int width = Mindgames.width;
-    public static int currentX=100;
-    public static int currentY=500;
+
     private static Map<Integer, int[]> blocks = new HashMap<>();
 
     public Go(){
@@ -18,22 +18,22 @@ public class Go {
         blocks.put(1, new int[]{1200, 130});
     }
 
-    public static void letsgo(int distanceX, int distanceY, int numberOfRoom){
-        if(!(isBlock(distanceX, distanceY, numberOfRoom))){
-            currentY+=distanceY;
-            currentX+=distanceX;
+    public static void letsgo(int distanceX, int distanceY, int numberOfRoom, People obj){
+        if(!(isBlock(distanceX, distanceY, numberOfRoom, obj))){
+            obj.setCurY(obj.getCurY()+distanceY);
+            obj.setCurX(obj.getCurX()+distanceX);
         }
     }
 
-    private static boolean isBlock(int distanceX, int distanceY, int numberOfRoom) {
+    private static boolean isBlock(int distanceX, int distanceY, int numberOfRoom, People obj) {
         whatIsBlock();
         for (int i = 0; i < 6; i++) {
             if (blocks.get(i).length == 2) {
-                if (currentX + distanceX <= blocks.get(i)[0] &&
-                        (i < 2==true? currentY + distanceY >= blocks.get(i)[1]: currentY + distanceY <= blocks.get(i)[1]))return true;
+                if (obj.getCurX() + distanceX <= blocks.get(i)[0] &&
+                        (i < 2==true? obj.getCurY() + distanceY >= blocks.get(i)[1]: obj.getCurY() + distanceY <= blocks.get(i)[1]))return true;
             }else if(blocks.get(i).length == 4){
-                if(currentX + distanceX >= blocks.get(i)[0] && currentY + distanceY >= blocks.get(i)[1] &&
-                        currentX + distanceX <= blocks.get(i)[2] && currentY + distanceY <= blocks.get(i)[3])return true;
+                if(obj.getCurX() + distanceX >= blocks.get(i)[0] && obj.getCurY() + distanceY >= blocks.get(i)[1] &&
+                        obj.getCurX() + distanceX <= blocks.get(i)[2] && obj.getCurY() + distanceY <= blocks.get(i)[3])return true;
             }
         }
         return false;
