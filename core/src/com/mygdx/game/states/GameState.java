@@ -12,14 +12,13 @@ import com.mygdx.game.states.graphics.lvl;
 public class GameState extends State {
     public static Texture img;
     public static Texture backgroundRoom;
+    private int numberOfRoom;
 //    private int currentX=100;
 //    private int currentY =100;
 
     public GameState(GameStateManager gms, int numberOfRoom) {
         super(gms);
-//        img = new Texture("gg.png");
-//        backgroundRoom = new Texture("backgroundsAndOther/roomOne.jpg");
-
+        this.numberOfRoom = numberOfRoom;
         lvl.whatsAboutGraphic("GameState");
     }
 
@@ -29,13 +28,15 @@ public class GameState extends State {
             public boolean touchDown(int x,int y,int pointer,int button) {
 
                 if (x > Mindgames.width / 4 && x < Mindgames.width /2) {
-                    Go.letsgo(50, 0, 1);
-                }else if(x < Mindgames.width / 4){
-                    Go.letsgo(-50, 0, 1);
+                    Go.letsgo(50, 0, numberOfRoom);
+                }else if(x < Mindgames.width / 4  && !((y>(int) (Mindgames.height*0.12)) && (x<(Mindgames.width*0.0214592275)))){
+                    Go.letsgo(-50, 0, numberOfRoom);
                 }else if(y> Mindgames.height/2&& x>Mindgames.width/2){
-                    Go.letsgo(0, -50, 1);
+                    Go.letsgo(0, -50, numberOfRoom);
                 }else if(y<Mindgames.height/2 && x>Mindgames.width/2) {
-                    Go.letsgo(0, 50, 1);
+                    Go.letsgo(0, 50, numberOfRoom);
+                }else if(y> (Mindgames.height*0.9) && x<(Mindgames.width*0.022)){
+                    gms.set(new GameMenuState(gms));
                 }
                 return false;
             }

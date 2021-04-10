@@ -24,7 +24,7 @@ public class StartMenuState extends State {
                 public boolean touchDown(int x,int y,int pointer,int button) {
                     if(x<(4*(Mindgames.width /6) + playButton.getHeight()) && x>(3 * (Mindgames.width / 4) - playButton.getWidth()) ) {
                         if(y<(Mindgames.height/2 + playButton.getHeight()/2) && y>(Mindgames.height/2-playButton.getHeight()/2)){
-                            gms.set(new GameState(gms, 1));
+                            gms.set(new GameMenuState(gms));
                         }
                     }
 

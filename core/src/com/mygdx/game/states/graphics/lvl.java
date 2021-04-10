@@ -1,6 +1,7 @@
 package com.mygdx.game.states.graphics;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.mygdx.game.states.GameMenuState;
 import com.mygdx.game.states.GameState;
 import com.mygdx.game.states.StartMenuState;
 
@@ -33,14 +34,18 @@ public class lvl{
                 StartMenuState.buttonProfiles = new Texture(roomsAndData.get(nameOfRoom)[2]);
                 StartMenuState.title = new Texture(roomsAndData.get(nameOfRoom)[0]);
                 break;
+            case("GameMenuState"):
+                GameMenuState.background = new Texture(roomsAndData.get(nameOfRoom)[0]);
+                GameMenuState.buttonFirstLvl = new Texture(roomsAndData.get(nameOfRoom)[1]);
+
         }
     }
 
     private static void whatIsGraphic(){
-        roomsAndData.put("StartMenuState", new String[]{"backgroundsAndOther/title.png", "backgroundsAndOther/backgroundMain.jpg",
+        roomsAndData.put("StartMenuState", new String[]{"backgroundsAndOther/title.png", "backgroundsAndOther/backgroundMenu.jpg",
                 "backgroundsAndOther/ButtonProfiles.png", "backgroundsAndOther/buttonStart.png"});
         roomsAndData.put("GameState", new String[]{"backgroundsAndOther/roomOne.jpg", "gg.png"});
-
+        roomsAndData.put("GameMenuState", new String[]{"backgroundsAndOther/backgroundStart.jpg", "backgroundsAndOther/btnlvlone.png"});
     }
 
 //    private
