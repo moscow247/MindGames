@@ -25,7 +25,6 @@ public class StartAnimation  extends State {
         gms.push(new StartMenuState(gms));
     }
 
-
     @Override
     public void update(float dt) {
     }
