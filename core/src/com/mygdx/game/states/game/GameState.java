@@ -9,16 +9,27 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.Mindgames;
 import com.mygdx.game.states.People;
 import com.mygdx.game.states.State;
+import com.mygdx.game.states.graphics.Objects;
 import com.mygdx.game.states.graphics.go.Go;
 import com.mygdx.game.states.graphics.lvl;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
+
+import sun.rmi.runtime.Log;
 
 
 public class GameState extends State {
     public static Texture texture;
-    private People me = new People();
+    private People me = new People((int)(Mindgames.width*0.2), Mindgames.height/2, 12, texture, false);
+    //        me.setImg(texture);
+//        me.setCurX((int)(Mindgames.width*0.2));
+//        me.setCurY(Mindgames.height/2);
+//        me.setSpeed(12);
+
+    private Objects box = new Objects((int) (Mindgames.width*0.457), (int) (Mindgames.height*0.3055),
+            (int) (Mindgames.width*0.568), (int) (Mindgames.height*0.09259), new String[][]{new String[]{"book"}});
     public static Texture backgroundRoom, btn;
 
     private int numberOfRoom;
@@ -26,18 +37,10 @@ public class GameState extends State {
 
 
     public GameState(GameStateManager gms, int numberOfRoom) {
+
         super(gms);
         this.numberOfRoom = numberOfRoom;
         lvl.whatsAboutGraphic(GameMenu.namesAndNumbers[numberOfRoom]);
-        me.setImg(texture);
-        me.setCurX((int)(Mindgames.width*0.2));
-        me.setCurY(Mindgames.height/2);
-        me.setSpeed(12);
-    }
-
-
-    public boolean touchUp (int x, int y, int pointer, int button) {
-        return true;
     }
 
     @Override
@@ -59,6 +62,10 @@ public class GameState extends State {
             } else if (y > (Mindgames.height * 0.9) && x < (Mindgames.width * 0.022)) {
                 gms.set(new GameMenu(gms));
             }
+            if(box.isNear(me, 50) && box.isHere(x,y) ){
+                me.setCurX(100);
+                me.setCurY(500);
+            }
 
 
         }
@@ -75,13 +82,13 @@ public class GameState extends State {
     public void render(SpriteBatch sb) {
         sb.begin();
         sb.draw(backgroundRoom, 0, 0, Mindgames.width, Mindgames.height);
-        sb.draw(texture, me.getCurX(), me.getCurY(), Mindgames.width/10, Mindgames.height/7);
+        sb.draw(texture, me.getCurX(), me.getCurY(), Mindgames.width/14, Mindgames.height/10);
         sb.draw(btn, 0, 0, (float) (Mindgames.width*0.18), (float) (Mindgames.height*0.28));
         sb.draw(btn, (float) (Mindgames.width*0.3), 0, (float) (Mindgames.width*0.1), (float) (Mindgames.height*0.28));
         sb.draw(btn, (float) (Mindgames.width*0.2), 0, (float) (Mindgames.width*0.09), (float) (Mindgames.height*0.28));
         sb.draw(btn, (float) (Mindgames.width*0.2), (float) (Mindgames.height*0.3), (float) (Mindgames.width*0.09), (float) (Mindgames.height*0.11));
         sb.end();
-
+        System.out.println(me.getCurY());
     }
 
     @Override

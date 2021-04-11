@@ -8,8 +8,17 @@ public class Objects {
 
     private int curX1,curY1,
             curX2,curY2;
-    private Texture img;
-    private String[][] whatIn;
+//    private Texture img;
+    private String[][]whatIn;
+
+    public Objects(int curX1, int curY1, int curX2, int curY2, String[][] whatIn) {
+        this.curX1 = curX1;
+        this.curY1 = curY1;
+        this.curX2 = curX2;
+        this.curY2 = curY2;
+//        this.img = img;
+        this.whatIn = whatIn;
+    }
 
 
     public int getCurX1() {
@@ -44,13 +53,13 @@ public class Objects {
         this.curY2 = curY2;
     }
 
-    public Texture getImg() {
-        return img;
-    }
-
-    public void setImg(Texture img) {
-        this.img = img;
-    }
+//    public Texture getImg() {
+//        return img;
+//    }
+//
+//    public void setImg(Texture img) {
+//        this.img = img;
+//    }
 
     public String[][] getWhatIn() {
         return whatIn;
@@ -60,8 +69,12 @@ public class Objects {
         this.whatIn = whatIn;
     }
 
-    public boolean isNear(Objects obj, People person){
-        return (Math.sqrt(Math.pow(person.getCurX()-(obj.getCurX1()-obj.getCurX2())/2, 2) + Math.pow(person.getCurY()-(obj.getCurY1()-obj.getCurY2())/2, 2)) > Mindgames.width * 0.043);
+    public boolean isNear( People person, int nearly){
+        return (Mindgames.height-person.getCurY()) < curY1 + nearly && (Mindgames.height-person.getCurY()) > curY2 - nearly
+                && person.getCurX() > curX1 - nearly && person.getCurX() < curX2 + nearly;
+    }
+    public boolean isHere(int x, int y){
+        return x<curX2 && x> curX1 && y< curY1 && y> curY2;
     }
 
 

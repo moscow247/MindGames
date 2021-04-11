@@ -13,7 +13,7 @@ public class Profiles extends State{
 
     public Profiles(GameStateManager gms) {
         super(gms);
-        backgroundProfiles = new Texture("backgroundsAndOther/backgroundProfiles.png");
+        backgroundProfiles = new Texture("backgroundsAndOther/BackgroundProfiles.png");
     }
 
     @Override

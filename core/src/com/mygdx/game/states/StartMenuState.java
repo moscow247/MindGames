@@ -73,7 +73,6 @@ public class StartMenuState extends State {
         buttonProfiles.dispose();
         background.dispose();
         playButton.dispose();
-        music.dispose();
 
     }
 }

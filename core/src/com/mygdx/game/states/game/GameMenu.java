@@ -13,13 +13,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GameMenu extends State {
-    public static Texture background, buttonFirstLvl;
+    public static Texture background, buttonFirstLvl, buttonSecondLvl;
     protected static String[] namesAndNumbers = new String[]{"GameStateOne", "GameStateTwo", "GameStateThree"};
 
 
     public GameMenu(GameStateManager gms) {
         super(gms);
-        lvl.whatsAboutGraphic("GameMenuState");
+        lvl.whatsAboutGraphic("GameMenu");
     }
 
     protected void whatIsRoom(){
@@ -53,7 +53,7 @@ public class GameMenu extends State {
         sb.begin();
         sb.draw(background, 0, 0, Mindgames.width, Mindgames.height );
         sb.draw(buttonFirstLvl, (float) (Mindgames.width*0.13), (float) (Mindgames.height*0.42));
-        sb.draw(buttonFirstLvl, (float) (Mindgames.width*0.33), (float) (Mindgames.height*0.42));
+        sb.draw(buttonSecondLvl, (float) (Mindgames.width*0.33), (float) (Mindgames.height*0.42));
         sb.end();
     }
 

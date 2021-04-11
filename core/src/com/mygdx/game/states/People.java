@@ -9,6 +9,14 @@ public class People {
     private Texture img;
     private boolean isBusy;
 
+    public People(int curX, int curY, int speed, Texture img, boolean isBusy) {
+        this.curX = curX;
+        this.curY = curY;
+        this.speed = speed;
+        this.img = img;
+        this.isBusy = isBusy;
+    }
+
     public int getSpeed() {
         return speed;
     }
