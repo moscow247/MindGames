@@ -15,13 +15,17 @@ import com.mygdx.game.states.graphics.lvl;
 public class StartMenuState extends State {
     private Music music;
     public static Texture background, playButton, buttonProfiles, title;
+    public static boolean isPlaying = false;
 
     public StartMenuState(GameStateManager gms) {
         super(gms);
         lvl.whatsAboutGraphic("StartMenuState");
         music = Gdx.audio.newMusic(Gdx.files.internal("music/music.mp3"));
         music.setLooping(true);
-        music.play();
+        if (!isPlaying) {
+            music.play();
+            isPlaying = true;
+        }
     }
 
     @Override
@@ -73,6 +77,6 @@ public class StartMenuState extends State {
         buttonProfiles.dispose();
         background.dispose();
         playButton.dispose();
-
+//        music.dispose();
     }
 }

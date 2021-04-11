@@ -18,6 +18,7 @@ public class StartAnimation  extends State {
     public StartAnimation(GameStateManager gms) {
         super(gms);
         logo = new Texture("backgroundsAndOther/logo.png");
+        StartMenuState.isPlaying = false;
     }
 
     @Override
