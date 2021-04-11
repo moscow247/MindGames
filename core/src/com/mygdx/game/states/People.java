@@ -17,9 +17,6 @@ public class People {
         this.speed = speed;
     }
 
-
-
-
     public boolean isBusy() {
         return isBusy;
     }
@@ -27,7 +24,6 @@ public class People {
     public void setBusy(boolean busy) {
         isBusy = busy;
     }
-
 
     public void setCurX(int curX) {
         this.curX = curX;

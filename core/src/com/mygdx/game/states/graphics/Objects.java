@@ -1,8 +1,10 @@
 package com.mygdx.game.states.graphics;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.mygdx.game.Mindgames;
+import com.mygdx.game.states.People;
 
-public class objects {
+public class Objects {
 
     private int curX1,curY1,
             curX2,curY2;
@@ -57,4 +59,10 @@ public class objects {
     public void setWhatIn(String[][] whatIn) {
         this.whatIn = whatIn;
     }
+
+    public boolean isNear(Objects obj, People person){
+        return (Math.sqrt(Math.pow(person.getCurX()-(obj.getCurX1()-obj.getCurX2())/2, 2) + Math.pow(person.getCurY()-(obj.getCurY1()-obj.getCurY2())/2, 2)) > Mindgames.width * 0.043);
+    }
+
+
 }

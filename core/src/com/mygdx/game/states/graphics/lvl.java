@@ -24,7 +24,12 @@ public class lvl{
 //        GameState.backgroundRoom = new Texture("backgroundsAndOther/roomOne.jpg");
         whatIsGraphic();
         switch (nameOfRoom){
-            case ("GameState"):
+            case ("GameStateOne"):
+                GameState.backgroundRoom = new Texture(roomsAndData.get(nameOfRoom)[0]);
+                GameState.texture = new Texture(roomsAndData.get(nameOfRoom)[1]);
+                GameState.btn = new Texture(roomsAndData.get(nameOfRoom)[2]);
+                break;
+            case ("GameStateTwo"):
                 GameState.backgroundRoom = new Texture(roomsAndData.get(nameOfRoom)[0]);
                 GameState.texture = new Texture(roomsAndData.get(nameOfRoom)[1]);
                 GameState.btn = new Texture(roomsAndData.get(nameOfRoom)[2]);
@@ -47,7 +52,8 @@ public class lvl{
     private static void whatIsGraphic(){
         roomsAndData.put("StartMenuState", new String[]{"backgroundsAndOther/title.png", "backgroundsAndOther/backgroundMenu.jpg",
                 "backgroundsAndOther/ButtonProfiles.png", "backgroundsAndOther/buttonStart.png"});
-        roomsAndData.put("GameState", new String[]{"backgroundsAndOther/roomOne.jpg", "gg.png", "backgroundsAndOther/sq.png"});
+        roomsAndData.put("GameStateOne", new String[]{"backgroundsAndOther/roomOne.jpg", "gg.png", "backgroundsAndOther/sq.png"});
+        roomsAndData.put("GameStateTwo", new String[]{"backgroundsAndOther/roomTwo.jpg", "gg.png", "backgroundsAndOther/sq.png"});
         roomsAndData.put("GameMenuState", new String[]{"backgroundsAndOther/backgroundStart.jpg", "backgroundsAndOther/btnlvlone.png"});
         roomsAndData.put("StartAnimation", new String[]{"backgroundsAndOther/logo.jpg"});
     }

@@ -39,6 +39,9 @@ public class StartMenuState extends State {
                             gms.set(new Profiles(gms));
                         }
                     }
+                    if(y< (Mindgames.height*0.2) && x<(Mindgames.width*0.05)){
+                        Gdx.app.exit();
+                    }
                     return false;
                 }
             });

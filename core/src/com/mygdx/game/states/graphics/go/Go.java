@@ -26,11 +26,27 @@ public class Go {
     }
 
     private static boolean isBlock(int distanceX, int distanceY, int numberOfRoom, People obj) {
+        int k;
+        switch (numberOfRoom){
+            case (1):
+                k=20;
+                break;
+            case(2):
+                k = 40;
+                break;
+            case(3):
+                k=60;
+                break;
+            default:
+                k=0;
+
+        }
         whatIsBlock();
-        for (int i = 0; i < 6; i++) {
+        for (int i = k; i < 6+k; i++) {
             if (blocks.get(i).length == 2) {
                 if (obj.getCurX() + distanceX <= blocks.get(i)[0] &&
-                        (i < 2==true? obj.getCurY() + distanceY >= blocks.get(i)[1]: obj.getCurY() + distanceY <= blocks.get(i)[1]))return true;
+                        (i < 2 + k ? obj.getCurY() + distanceY >= blocks.get(i)[1]: obj.getCurY()
+                                + distanceY <= blocks.get(i)[1]))return true;
             }else if(blocks.get(i).length == 4){
                 if(obj.getCurX() + distanceX >= blocks.get(i)[0] && obj.getCurY() + distanceY >= blocks.get(i)[1] &&
                         obj.getCurX() + distanceX <= blocks.get(i)[2] && obj.getCurY() + distanceY <= blocks.get(i)[3])return true;
@@ -46,6 +62,16 @@ public class Go {
         blocks.put(3, new int[]{Mindgames.width, (int) (Mindgames.height*0.04629)});
         blocks.put(4, new int[]{0, 0, (int) (Mindgames.width*0.0214592), Mindgames.height});
         blocks.put(5, new int[]{(int) (Mindgames.width*0.869099), 0, Mindgames.width, Mindgames.height});
+
+        ///
+
+        blocks.put(20, new int[]{Mindgames.width+100, (int) (Mindgames.height*0.83)});
+        blocks.put(21, new int[]{(int) (Mindgames.width*0.48), (int) (Mindgames.height*0.32407), (int) (Mindgames.width*0.590129), Mindgames.height});
+        blocks.put(22, new int[]{(int) (Mindgames.width*0.55794), (int) (Mindgames.height*0.3241), (int) (Mindgames.width*0.699571), (int) (Mindgames.height*0.45)});
+        blocks.put(23, new int[]{Mindgames.width, (int) (Mindgames.height*0.04629)});
+        blocks.put(24, new int[]{0, 0, (int) (Mindgames.width*0.0214592), Mindgames.height});
+        blocks.put(25, new int[]{(int) (Mindgames.width*0.869099), 0, Mindgames.width, Mindgames.height});
+
     }
 
 }
