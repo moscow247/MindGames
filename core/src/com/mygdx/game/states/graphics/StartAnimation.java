@@ -14,6 +14,7 @@ public class StartAnimation  extends State {
     public static Texture logo;
     private float timer = 3f;
 
+
     public StartAnimation(GameStateManager gms) {
         super(gms);
         logo = new Texture("backgroundsAndOther/logo.png");

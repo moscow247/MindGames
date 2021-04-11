@@ -12,15 +12,12 @@ public abstract class State {
         this.gms = gms;
     }
 
-
-
     protected abstract void handleInput();
-
-    public abstract void dispose();
 
     public abstract void update(float dt);
 
     public abstract void render(SpriteBatch sb);
 
-    ;
+    public abstract void dispose();
+
 }

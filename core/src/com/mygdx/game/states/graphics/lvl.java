@@ -27,6 +27,7 @@ public class lvl{
             case ("GameState"):
                 GameState.backgroundRoom = new Texture(roomsAndData.get(nameOfRoom)[0]);
                 GameState.texture = new Texture(roomsAndData.get(nameOfRoom)[1]);
+                GameState.btn = new Texture(roomsAndData.get(nameOfRoom)[2]);
                 break;
             case ("StartMenuState"):
                 StartMenuState.background = new Texture(roomsAndData.get(nameOfRoom)[1]);
@@ -46,7 +47,7 @@ public class lvl{
     private static void whatIsGraphic(){
         roomsAndData.put("StartMenuState", new String[]{"backgroundsAndOther/title.png", "backgroundsAndOther/backgroundMenu.jpg",
                 "backgroundsAndOther/ButtonProfiles.png", "backgroundsAndOther/buttonStart.png"});
-        roomsAndData.put("GameState", new String[]{"backgroundsAndOther/roomOne.jpg", "gg.png"});
+        roomsAndData.put("GameState", new String[]{"backgroundsAndOther/roomOne.jpg", "gg.png", "backgroundsAndOther/sq.png"});
         roomsAndData.put("GameMenuState", new String[]{"backgroundsAndOther/backgroundStart.jpg", "backgroundsAndOther/btnlvlone.png"});
         roomsAndData.put("StartAnimation", new String[]{"backgroundsAndOther/logo.jpg"});
     }
