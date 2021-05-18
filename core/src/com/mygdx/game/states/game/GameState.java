@@ -4,8 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.Mindgames;
+import com.mygdx.game.states.objects.Objects;
 import com.mygdx.game.states.objects.People;
-import com.mygdx.game.states.objects.Profiles;
 import com.mygdx.game.states.State;
 import com.mygdx.game.states.graphics.go.Go;
 import com.mygdx.game.states.graphics.lvl;
@@ -20,12 +20,12 @@ public class GameState extends State {
 //        me.setCurY(Mindgames.height/2);
 //        me.setSpeed(12);
 
-    private Profiles.Objects box = new Profiles.Objects((int) (Mindgames.width*0.457), (int) (Mindgames.height*0.3055),
+    private Objects box = new Objects((int) (Mindgames.width*0.457), (int) (Mindgames.height*0.3055),
             (int) (Mindgames.width*0.568), (int) (Mindgames.height*0.09259), new String[][]{new String[]{"book"}});
     public static Texture backgroundRoom, backgroundRoomTwo, btn;
     public static int startY, startX;
 
-    private int numberOfRoom, flag=1;
+    private int numberOfRoom, flag=1, SMNear=0;
 
 
 
@@ -69,6 +69,11 @@ public class GameState extends State {
 
             if((lvl.allObj.get(0)[0]).isNear(me, 50)){
                 gms.set(new GameWait(gms, 1));
+
+            }else if((lvl.allObj.get(0)[1]).isNear(me, 50)){
+                gms.set(new GameWait(gms, 2));
+            }else if((lvl.allObj.get(0)[2].isNear(me, 50))){
+                SMNear=1;
             }
 
             if(numberOfRoom == 1) {
@@ -90,6 +95,10 @@ public class GameState extends State {
             }
         }
 
+        protected void isHereNow(){
+
+        }
+
     @Override
     public void render(SpriteBatch sb) {
         sb.begin();
@@ -103,7 +112,17 @@ public class GameState extends State {
             sb.draw(btn, 0, 0, (float) (Mindgames.width), (float) (Mindgames.height));
             sb.draw(btn, (float) (Mindgames.width/2-(Mindgames.width*0.049)), (float) (Mindgames.height/2-(Mindgames.height*0.0655)), (float) (Mindgames.width*0.098), (float) (Mindgames.height*0.09836));
         }
+        if(SMNear == 1){
+            if (Gdx.input.isTouched()) {
+                int x = Gdx.input.getX();
+                int y = Gdx.input.getY();
+//                if (){
+//
+//                }
+            }
+        }
         sb.end();
+        System.out.println(me.getCurX());
         System.out.println(me.getCurY());
     }
 

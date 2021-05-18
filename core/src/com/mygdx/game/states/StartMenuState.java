@@ -9,7 +9,7 @@ import com.mygdx.game.Mindgames;
 import com.mygdx.game.states.game.GameMenu;
 import com.mygdx.game.states.game.GameStateManager;
 import com.mygdx.game.states.graphics.lvl;
-import com.mygdx.game.states.objects.Profiles;
+import com.mygdx.game.states.game.Profiles;
 //import com.sun.xml.internal.ws.handler.HandlerException;
 
 public class StartMenuState extends State {
