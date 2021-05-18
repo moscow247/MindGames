@@ -1,7 +1,7 @@
 package com.mygdx.game.states.graphics.go;
 
 import com.mygdx.game.Mindgames;
-import com.mygdx.game.states.People;
+import com.mygdx.game.states.objects.People;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -42,7 +42,7 @@ public class Go {
 
         }
         whatIsBlock();
-        for (int i = k; i < 6+k; i++) {
+        for (int i = k; i < 7+k; i++) {
             if (blocks.get(i).length == 2) {
                 if (obj.getCurX() + distanceX <= blocks.get(i)[0] &&
                         (i < 2 + k ? obj.getCurY() + distanceY >= blocks.get(i)[1]: obj.getCurY()
@@ -57,20 +57,22 @@ public class Go {
 
     private static void whatIsBlock(){
         blocks.put(0, new int[]{Mindgames.width+100, (int) (Mindgames.height*0.83)});
-        blocks.put(1, new int[]{(int) (Mindgames.width*0.48), (int) (Mindgames.height*0.32407), (int) (Mindgames.width*0.590129), Mindgames.height});
-        blocks.put(2, new int[]{(int) (Mindgames.width*0.55794), (int) (Mindgames.height*0.3241), (int) (Mindgames.width*0.699571), (int) (Mindgames.height*0.45)});
+        blocks.put(1, new int[]{(int) (Mindgames.width*0.28), (int) (Mindgames.height*0.25), (int) (Mindgames.width*0.35), Mindgames.height});
+        blocks.put(2, new int[]{(int) (Mindgames.width*0.44), (int) (Mindgames.height*0.279), (int) (Mindgames.width*0.967), (int) (Mindgames.height*0.42)});
         blocks.put(3, new int[]{Mindgames.width, (int) (Mindgames.height*0.04629)});
-        blocks.put(4, new int[]{0, 0, (int) (Mindgames.width*0.0214592), Mindgames.height});
-        blocks.put(5, new int[]{(int) (Mindgames.width*0.869099), 0, Mindgames.width, Mindgames.height});
+        blocks.put(4, new int[]{0, (int) (Mindgames.height*0.345), (int) (Mindgames.width*0.0214592), (int) (Mindgames.height)});
+        blocks.put(5, new int[]{0, 0, (int) (Mindgames.width*0.0214592), (int) (Mindgames.height*0.214)});
+        blocks.put(6, new int[]{(int) (Mindgames.width*0.92), 0, Mindgames.width, Mindgames.height});
 
         ///
 
         blocks.put(20, new int[]{Mindgames.width+100, (int) (Mindgames.height*0.83)});
-        blocks.put(21, new int[]{(int) (Mindgames.width*0.48), (int) (Mindgames.height*0.32407), (int) (Mindgames.width*0.590129), Mindgames.height});
-        blocks.put(22, new int[]{(int) (Mindgames.width*0.55794), (int) (Mindgames.height*0.3241), (int) (Mindgames.width*0.699571), (int) (Mindgames.height*0.45)});
+        blocks.put(21, new int[]{});
+        blocks.put(22, new int[]{(int) (Mindgames.width*0.92), (int) (Mindgames.height*0.329), Mindgames.width, (int) (Mindgames.height)});
         blocks.put(23, new int[]{Mindgames.width, (int) (Mindgames.height*0.04629)});
         blocks.put(24, new int[]{0, 0, (int) (Mindgames.width*0.0214592), Mindgames.height});
-        blocks.put(25, new int[]{(int) (Mindgames.width*0.869099), 0, Mindgames.width, Mindgames.height});
+        blocks.put(25, new int[]{(int) (Mindgames.width*0.92), 0, Mindgames.width, (int) (Mindgames.height*0.1652)});
+        blocks.put(26, new int[]{});
 
     }
 

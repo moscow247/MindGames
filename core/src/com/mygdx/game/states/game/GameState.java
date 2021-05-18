@@ -1,38 +1,32 @@
 package com.mygdx.game.states.game;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.InputAdapter;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.Mindgames;
-import com.mygdx.game.states.People;
+import com.mygdx.game.states.objects.People;
+import com.mygdx.game.states.objects.Profiles;
 import com.mygdx.game.states.State;
-import com.mygdx.game.states.graphics.Objects;
 import com.mygdx.game.states.graphics.go.Go;
 import com.mygdx.game.states.graphics.lvl;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.logging.Logger;
-
-import sun.rmi.runtime.Log;
 
 
 public class GameState extends State {
     public static Texture texture;
     private People me = new People((int)(Mindgames.width*0.2), Mindgames.height/2, 12, texture, false);
     //        me.setImg(texture);
+
 //        me.setCurX((int)(Mindgames.width*0.2));
 //        me.setCurY(Mindgames.height/2);
 //        me.setSpeed(12);
 
-    private Objects box = new Objects((int) (Mindgames.width*0.457), (int) (Mindgames.height*0.3055),
+    private Profiles.Objects box = new Profiles.Objects((int) (Mindgames.width*0.457), (int) (Mindgames.height*0.3055),
             (int) (Mindgames.width*0.568), (int) (Mindgames.height*0.09259), new String[][]{new String[]{"book"}});
-    public static Texture backgroundRoom, btn;
+    public static Texture backgroundRoom, backgroundRoomTwo, btn;
+    public static int startY, startX;
 
-    private int numberOfRoom;
+    private int numberOfRoom, flag=1;
+
 
 
 
@@ -40,7 +34,13 @@ public class GameState extends State {
 
         super(gms);
         this.numberOfRoom = numberOfRoom;
+        if(Mindgames.wereHere == 0){
+            flag=0;
+            Mindgames.wereHere=1;
+        }
         lvl.whatsAboutGraphic(GameMenu.namesAndNumbers[numberOfRoom]);
+        me.setCurX(startX);
+        me.setCurY(startY);
     }
 
     @Override
@@ -51,22 +51,31 @@ public class GameState extends State {
             int y = Gdx.input.getY();
 
             //control
-            if (x < Mindgames.width*0.18 && y > Mindgames.height*0.72) {
+            if (x> Mindgames.width*0.085 && x < Mindgames.width*0.18 && y > Mindgames.height*0.82 && y < Mindgames.height*0.95) {
                 Go.letsgo(-1 * me.getSpeed(), 0, numberOfRoom, me);
-            } else if (x > Mindgames.width*0.3 && x<Mindgames.width*0.4 && y>Mindgames.height*0.72) {
+            } else if (x > Mindgames.width*0.3 && x<Mindgames.width*0.4 && y>Mindgames.height*0.82 && y < Mindgames.height*0.95) {
                 Go.letsgo(me.getSpeed(), 0, numberOfRoom, me);
-            } else if (x < Mindgames.width*0.3 && x>Mindgames.width*0.18 && y > Mindgames.height *0.72) {
+            } else if (x < Mindgames.width*0.3 && x>Mindgames.width*0.18 && y > Mindgames.height *0.82 && y < Mindgames.height*0.95) {
                 Go.letsgo(0, -1 * me.getSpeed(), numberOfRoom, me);
-            } else if (x < Mindgames.width*0.3 && x>Mindgames.width*0.18 && y < Mindgames.height *0.72&& y > Mindgames.height *0.59) {
+            } else if (x < Mindgames.width*0.3 && x>Mindgames.width*0.18 && y < Mindgames.height *0.82&& y > Mindgames.height *0.69) {
                 Go.letsgo(0, me.getSpeed(), numberOfRoom, me);
-            } else if (y > (Mindgames.height * 0.9) && x < (Mindgames.width * 0.022)) {
+            } else if (y < (Mindgames.height * 0.1) && x < (Mindgames.width * 0.05)) {
                 gms.set(new GameMenu(gms));
             }
-            if(box.isNear(me, 50) && box.isHere(x,y) ){
+            if(box.isNear(me, 20) && box.isHere(x,y) ){
                 me.setCurX(100);
                 me.setCurY(500);
             }
 
+            if((lvl.allObj.get(0)[0]).isNear(me, 50)){
+                gms.set(new GameWait(gms, 1));
+            }
+
+            if(numberOfRoom == 1) {
+                if ((lvl.allObj.get(1)[0]).isNear(me, 50)) {
+                    gms.set(new GameWait(gms, 0));
+                }
+            }
 
         }
 
@@ -76,17 +85,24 @@ public class GameState extends State {
     @Override
     public void update(float dt) {
         handleInput();
-    }
+            if (Gdx.input.isTouched()) {
+                flag=1;
+            }
+        }
 
     @Override
     public void render(SpriteBatch sb) {
         sb.begin();
         sb.draw(backgroundRoom, 0, 0, Mindgames.width, Mindgames.height);
-        sb.draw(texture, me.getCurX(), me.getCurY(), Mindgames.width/14, Mindgames.height/10);
-        sb.draw(btn, 0, 0, (float) (Mindgames.width*0.18), (float) (Mindgames.height*0.28));
-        sb.draw(btn, (float) (Mindgames.width*0.3), 0, (float) (Mindgames.width*0.1), (float) (Mindgames.height*0.28));
-        sb.draw(btn, (float) (Mindgames.width*0.2), 0, (float) (Mindgames.width*0.09), (float) (Mindgames.height*0.28));
-        sb.draw(btn, (float) (Mindgames.width*0.2), (float) (Mindgames.height*0.3), (float) (Mindgames.width*0.09), (float) (Mindgames.height*0.11));
+        sb.draw(texture, me.getCurX(), me.getCurY(), Mindgames.width/20, Mindgames.height/16);
+        sb.draw(btn, (float) (Mindgames.width*0.085), (float) (Mindgames.height*0.05), (float) (Mindgames.width*0.1), (float) (Mindgames.height*0.13));
+        sb.draw(btn, (float) (Mindgames.width*0.3), (float) (Mindgames.height*0.05), (float) (Mindgames.width*0.1), (float) (Mindgames.height*0.13));
+        sb.draw(btn, (float) (Mindgames.width * 0.2), (float) (Mindgames.height * 0.05), (float) (Mindgames.width * 0.09), (float) (Mindgames.height * 0.13));
+        sb.draw(btn, (float) (Mindgames.width*0.2), (float) (Mindgames.height*0.2), (float) (Mindgames.width*0.09), (float) (Mindgames.height*0.11));
+        if (flag == 0 && numberOfRoom==0) {
+            sb.draw(btn, 0, 0, (float) (Mindgames.width), (float) (Mindgames.height));
+            sb.draw(btn, (float) (Mindgames.width/2-(Mindgames.width*0.049)), (float) (Mindgames.height/2-(Mindgames.height*0.0655)), (float) (Mindgames.width*0.098), (float) (Mindgames.height*0.09836));
+        }
         sb.end();
         System.out.println(me.getCurY());
     }

@@ -11,6 +11,7 @@ import com.mygdx.game.states.graphics.StartAnimation;
 public class Mindgames extends ApplicationAdapter {
 	public static int width;
 	public static int height;
+	public static int wereHere=0;
 	public static final String title = "Mind games";
 
 

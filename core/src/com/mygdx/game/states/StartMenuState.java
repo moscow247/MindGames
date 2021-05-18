@@ -2,7 +2,6 @@ package com.mygdx.game.states;
 
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -10,6 +9,7 @@ import com.mygdx.game.Mindgames;
 import com.mygdx.game.states.game.GameMenu;
 import com.mygdx.game.states.game.GameStateManager;
 import com.mygdx.game.states.graphics.lvl;
+import com.mygdx.game.states.objects.Profiles;
 //import com.sun.xml.internal.ws.handler.HandlerException;
 
 public class StartMenuState extends State {
@@ -30,8 +30,9 @@ public class StartMenuState extends State {
 
     @Override
     protected void handleInput() {
-            Gdx.input.setInputProcessor(new InputAdapter() {
-                public boolean touchDown(int x,int y,int pointer,int button) {
+        if (Gdx.input.isTouched()) {
+            int x =Gdx.input.getX();
+            int y = Gdx.input.getY();
                     if(x<(4*(Mindgames.width /6) + playButton.getHeight()) && x>(3 * (Mindgames.width / 4) - playButton.getWidth()) ) {
                         if(y<(Mindgames.height/2 + playButton.getHeight()/2) && y>(Mindgames.height/2-playButton.getHeight()/2)){
                             gms.set(new GameMenu(gms));
@@ -46,9 +47,9 @@ public class StartMenuState extends State {
                     if(y< (Mindgames.height*0.2) && x<(Mindgames.width*0.05)){
                         Gdx.app.exit();
                     }
-                    return false;
+
                 }
-            });
+
 
     }
 

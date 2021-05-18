@@ -26,21 +26,20 @@ public class GameMenu extends State {
     }
 
     @Override
-    protected void handleInput()
-    {
-        Gdx.input.setInputProcessor(new InputAdapter() {
-            public boolean touchDown(int x,int y,int pointer,int button) {
+    protected void handleInput() {
+        if (Gdx.input.isTouched()) {
+            int x = Gdx.input.getX();
+            int y = Gdx.input.getY();
 
-                if(x>(float) (Mindgames.width*0.13) && x<(float) (Mindgames.width*0.1931) && y>(float) (Mindgames.height*0.42) && y<(float) (Mindgames.height*0.55)){
-                    gms.push(new GameState(gms, 0));
-                }else if(y< (Mindgames.height*0.3) && x<(Mindgames.width*0.05)){
-                    gms.set(new StartMenuState(gms));
-                }else if(x>(float) (Mindgames.width*0.33) && x<(float) (Mindgames.width*0.3931) && y>(float) (Mindgames.height*0.42) && y<(float) (Mindgames.height*0.55)){
-                    gms.push(new GameState(gms, 1));
-                }
-                return false;
+            if (x > (float) (Mindgames.width * 0.13) && x < (float) (Mindgames.width * 0.1931) && y > (float) (Mindgames.height * 0.42) && y < (float) (Mindgames.height * 0.55)) {
+                gms.push(new GameState(gms, 0));
+            } else if (y < (Mindgames.height * 0.3) && x < (Mindgames.width * 0.05)) {
+                gms.set(new StartMenuState(gms));
+            } else if (x > (float) (Mindgames.width * 0.33) && x < (float) (Mindgames.width * 0.3931) && y > (float) (Mindgames.height * 0.42) && y < (float) (Mindgames.height * 0.55)) {
+                gms.push(new GameState(gms, 1));
             }
-        });
+        }
+
     }
 
     @Override
