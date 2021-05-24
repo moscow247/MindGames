@@ -21,7 +21,7 @@ public class GameState extends State {
     private Objects box = new Objects((int) (Mindgames.width*0.457), (int) (Mindgames.height*0.3055),
             (int) (Mindgames.width*0.568), (int) (Mindgames.height*0.09259), new String[][]{new String[]{"book"}});
     public static Texture backgroundRoom, backgroundRoomTwo, btnUp, btnDown,
-            btnLeft, btnRight, btn, btnTake, back, table;
+            btnLeft, btnRight, btn, btnTake, back, table,sq;
     public static int startY, startX;
 
     private int numberOfRoom, flag=1, SMNear=0,takeFlag=0, nav=0;
@@ -113,8 +113,7 @@ public class GameState extends State {
         sb.draw(btnUp, (float) (Mindgames.width*0.2), (float) (Mindgames.height*0.2), (float) (Mindgames.width*0.09), (float) (Mindgames.height*0.11));
         if (flag == 0 && numberOfRoom==0 && prefs.getBoolean("first", true)) {
             prefs.putBoolean("first", false);
-            sb.draw(btn, 0, 0, (float) (Mindgames.width), (float) (Mindgames.height));
-            sb.draw(btn, (float) (Mindgames.width/2-(Mindgames.width*0.049)), (float) (Mindgames.height/2-(Mindgames.height*0.0655)), (float) (Mindgames.width*0.098), (float) (Mindgames.height*0.09836));
+            sb.draw(sq, 0, 0, (float) (Mindgames.width), (float) (Mindgames.height));
         }
         if(SMNear == 1){
             sb.draw(btnTake, (float)(Mindgames.width*0.76), (float)(Mindgames.height*0.1),(float) (Mindgames.width*0.1), (float) (Mindgames.height*0.13));

@@ -44,6 +44,7 @@ public class lvl{
                 GameState.btnTake = new Texture(roomsAndData.get(nameOfRoom)[7]);
                 GameState.table = new Texture(roomsAndData.get(nameOfRoom)[8]);
                 GameState.back = new Texture(roomsAndData.get(nameOfRoom)[9]);
+                GameState.sq = new Texture(roomsAndData.get(nameOfRoom)[11]);
                 GameState.backgroundRoomTwo = new Texture(roomsAndData.get(nameOfRoom)[3]);
                 Objects doorUp = new Objects((int) (Mindgames.width*0.732), 0,
                         (int) (Mindgames.width*0.79), (int) (Mindgames.height*0.1962),
@@ -121,7 +122,8 @@ public class lvl{
                 "backgroundsAndOther/icons/take.png",
                 "backgroundsAndOther/table.png",
                 "backgroundsAndOther/icons/back.png",
-                "gg1.png"
+                "gg1.png",
+                "backgroundsAndOther/icons/sq1.png"
         });
         roomsAndData.put("GameStateTwo", new String[]{"backgroundsAndOther/roomTwo.png",
                 "gg.png", "backgroundsAndOther/icons/sq.png"});
