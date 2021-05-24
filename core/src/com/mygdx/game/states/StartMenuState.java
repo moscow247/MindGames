@@ -8,23 +8,27 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.Mindgames;
 import com.mygdx.game.states.game.GameMenu;
 import com.mygdx.game.states.game.GameStateManager;
+import com.mygdx.game.states.game.Settings;
 import com.mygdx.game.states.graphics.lvl;
 import com.mygdx.game.states.game.Profiles;
+
+import static com.mygdx.game.Mindgames.prefs;
 //import com.sun.xml.internal.ws.handler.HandlerException;
 
 public class StartMenuState extends State {
-    private Music music;
-    public static Texture background, playButton, buttonProfiles, title;
+    public static Music music;
+    public static Texture background, playButton, buttonProfiles, title, buttonSettings;
     public static boolean isPlaying = false;
 
     public StartMenuState(GameStateManager gms) {
         super(gms);
         lvl.whatsAboutGraphic("StartMenuState");
         music = Gdx.audio.newMusic(Gdx.files.internal("music/music.mp3"));
-        music.setLooping(true);
-        if (!isPlaying) {
+        if (!StartMenuState.isPlaying && prefs.getInteger("music", 0)==1) {
             music.play();
+            music.setLooping(true);
             isPlaying = true;
+        }else{
         }
     }
 
@@ -34,17 +38,21 @@ public class StartMenuState extends State {
             int x =Gdx.input.getX();
             int y = Gdx.input.getY();
                     if(x<(4*(Mindgames.width /6) + playButton.getHeight()) && x>(3 * (Mindgames.width / 4) - playButton.getWidth()) ) {
-                        if(y<(Mindgames.height/2 + playButton.getHeight()/2) && y>(Mindgames.height/2-playButton.getHeight()/2)){
+                        if (y < (Mindgames.height / 2 + playButton.getHeight() / 2) && y > (Mindgames.height / 2 - playButton.getHeight() / 2)) {
                             gms.set(new GameMenu(gms));
                         }
                     }
-
-                    if(x<(47*Mindgames.width /60 + buttonProfiles.getWidth()/2) && x>(47*Mindgames.width /60 - buttonProfiles.getWidth()/2)){
-                         if(y < (3 * (Mindgames.height /16) + buttonProfiles.getHeight()/2) && y> (3 * (Mindgames.height /16) - buttonProfiles.getHeight()/2 )){
+                    if(x<(40*Mindgames.width /60 + buttonProfiles.getWidth()/2) && x>(40*Mindgames.width /60 - buttonProfiles.getWidth()/2)){
+                         if(y < (4.5 * (Mindgames.height /16) + buttonProfiles.getHeight()/2) && y> (4.5 * (Mindgames.height /16) - buttonProfiles.getHeight()/2 )){
                             gms.set(new Profiles(gms));
                         }
                     }
-                    if(y< (Mindgames.height*0.2) && x<(Mindgames.width*0.05)){
+                    if(x<(37*Mindgames.width /60 + buttonProfiles.getWidth()/2) && x>(39*Mindgames.width /60 - buttonProfiles.getWidth()/2)){
+                        if(y < (15 * (Mindgames.height /20) + buttonProfiles.getHeight()/2) && y> (15 * (Mindgames.height /20) - buttonProfiles.getHeight()/2 )){
+                            gms.set(new Settings(gms));
+                        }
+                    }
+                    if(y> (Mindgames.height*0.8) && x<(Mindgames.width*0.05)){
                         Gdx.app.exit();
                     }
 
@@ -67,9 +75,11 @@ public class StartMenuState extends State {
         sb.begin();
         sb.draw(background, 0, 0, Mindgames.width, Mindgames.height);
         sb.draw(playButton, 4*(Mindgames.width /6) - (playButton.getWidth() /2), (Mindgames.height /2) - (playButton.getHeight() /2));
-        sb.draw(buttonProfiles, 47*(Mindgames.width /60) - (buttonProfiles.getWidth() /2), 13 * (Mindgames.height /16) - (buttonProfiles.getHeight() /2));
+        sb.draw(buttonProfiles, 45*(Mindgames.width /60) - (buttonProfiles.getWidth() /2), 12 * (Mindgames.height /16) - (buttonProfiles.getHeight() /2));
+        sb.draw(buttonSettings, 35*(Mindgames.width /60) - (buttonProfiles.getWidth() /2), 5 * (Mindgames.height /20) - (buttonProfiles.getHeight() /2));
         sb.draw(title, Mindgames.width/40, 15*Mindgames.height/20);
         sb.end();
+        System.out.println(StartMenuState.isPlaying);
     }
 
     @Override

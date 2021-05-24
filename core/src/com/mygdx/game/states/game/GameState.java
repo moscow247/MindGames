@@ -14,12 +14,6 @@ import com.mygdx.game.states.graphics.lvl;
 public class GameState extends State {
     public static Texture texture;
     private People me = new People((int)(Mindgames.width*0.2), Mindgames.height/2, 12, texture, false);
-    //        me.setImg(texture);
-
-//        me.setCurX((int)(Mindgames.width*0.2));
-//        me.setCurY(Mindgames.height/2);
-//        me.setSpeed(12);
-
     private Objects box = new Objects((int) (Mindgames.width*0.457), (int) (Mindgames.height*0.3055),
             (int) (Mindgames.width*0.568), (int) (Mindgames.height*0.09259), new String[][]{new String[]{"book"}});
     public static Texture backgroundRoom, backgroundRoomTwo, btn;
@@ -62,11 +56,6 @@ public class GameState extends State {
             } else if (y < (Mindgames.height * 0.1) && x < (Mindgames.width * 0.05)) {
                 gms.set(new GameMenu(gms));
             }
-            if(box.isNear(me, 20) && box.isHere(x,y) ){
-                me.setCurX(100);
-                me.setCurY(500);
-            }
-
             if((lvl.allObj.get(0)[0]).isNear(me, 50)){
                 gms.set(new GameWait(gms, 1));
 
@@ -113,12 +102,14 @@ public class GameState extends State {
             sb.draw(btn, (float) (Mindgames.width/2-(Mindgames.width*0.049)), (float) (Mindgames.height/2-(Mindgames.height*0.0655)), (float) (Mindgames.width*0.098), (float) (Mindgames.height*0.09836));
         }
         if(SMNear == 1){
-            if (Gdx.input.isTouched()) {
-                int x = Gdx.input.getX();
+            sb.draw(btn, 0, 0, (float) (Mindgames.width), (float) (Mindgames.height));
+            sb.draw(btn, (float) (Mindgames.width/2-(Mindgames.width*0.049)), (float) (Mindgames.height/2-(Mindgames.height*0.0655)), (float) (Mindgames.width*0.098), (float) (Mindgames.height*0.09836));
+            if(Gdx.input.isTouched()){
+                int x =Gdx.input.getX();
                 int y = Gdx.input.getY();
-//                if (){
-//
-//                }
+                if(x>1000 && y>500){
+                    SMNear=0;
+                }
             }
         }
         sb.end();

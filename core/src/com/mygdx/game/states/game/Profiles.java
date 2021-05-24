@@ -8,14 +8,15 @@ import com.mygdx.game.Mindgames;
 import com.mygdx.game.states.StartMenuState;
 import com.mygdx.game.states.State;
 import com.mygdx.game.states.game.GameStateManager;
+import com.mygdx.game.states.graphics.lvl;
 
 public class Profiles extends State {
 
-    private Texture backgroundProfiles;
+    public static Texture backgroundProfiles;
 
     public Profiles(GameStateManager gms) {
         super(gms);
-        backgroundProfiles = new Texture("backgroundsAndOther/BackgroundProfiles.png");
+        lvl.whatsAboutGraphic("Profiles");
     }
 
     @Override

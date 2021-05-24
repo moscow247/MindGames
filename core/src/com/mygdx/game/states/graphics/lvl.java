@@ -1,15 +1,20 @@
 package com.mygdx.game.states.graphics;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.game.Mindgames;
 import com.mygdx.game.states.game.GameMenu;
 import com.mygdx.game.states.game.GameState;
 import com.mygdx.game.states.StartMenuState;
+import com.mygdx.game.states.game.Profiles;
+import com.mygdx.game.states.game.Settings;
 import com.mygdx.game.states.objects.Objects;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.mygdx.game.Mindgames.prefs;
 
 public class lvl{
     private ArrayList<String> block = new ArrayList<>();
@@ -39,7 +44,7 @@ public class lvl{
                         (int) (Mindgames.width*0.0214592), (int) (Mindgames.height*0.671),
                         new String[][]{new String[]{"out-left"}});
                 Objects sofa =  new Objects((int) (Mindgames.width*0.615), 0,
-                        (int) (Mindgames.width*0.196), (int) (Mindgames.height*0.6917),
+                        (int) (Mindgames.width*0.704), (int) (Mindgames.height*0.6917),
                         new String[][]{new String[]{"1234"}});
 
                 allObj.put(0, new Objects[]{doorLeft, doorUp, sofa});
@@ -68,6 +73,7 @@ public class lvl{
                 StartMenuState.background = new Texture(roomsAndData.get(nameOfRoom)[1]);
                 StartMenuState.playButton = new Texture(roomsAndData.get(nameOfRoom)[3]);
                 StartMenuState.buttonProfiles = new Texture(roomsAndData.get(nameOfRoom)[2]);
+                StartMenuState.buttonSettings = new Texture(roomsAndData.get(nameOfRoom)[4]);
                 StartMenuState.title = new Texture(roomsAndData.get(nameOfRoom)[0]);
                 break;
             case("GameMenu"):
@@ -77,17 +83,30 @@ public class lvl{
                 break;
             case("StartAnimation"):
                 StartAnimation.logo = new Texture(roomsAndData.get(nameOfRoom)[0]);
+                break;
+            case("Profiles"):
+                Profiles.backgroundProfiles = new Texture(roomsAndData.get(nameOfRoom)[0]);
+                break;
+            case("Settings"):
+                Settings.background = new Texture(roomsAndData.get(nameOfRoom)[0]);
+                Settings.sound = new Texture(roomsAndData.get(nameOfRoom)[1]);
+                Settings.notSound = new Texture(roomsAndData.get(nameOfRoom)[2]);
+                Settings.back = new Texture(roomsAndData.get(nameOfRoom)[3]);
+                break;
         }
     }
 
     private static void whatIsGraphic(){
         roomsAndData.put("StartMenuState", new String[]{"backgroundsAndOther/title.png", "backgroundsAndOther/backgroundMenu.jpg",
-                "backgroundsAndOther/ButtonProfiles.png", "backgroundsAndOther/buttonStart.png"});
+                "backgroundsAndOther/ButtonProfiles.png", "backgroundsAndOther/buttonStart.png", "backgroundsAndOther/buttonSettings.png"});
         roomsAndData.put("GameStateOne", new String[]{"backgroundsAndOther/roomOne.png", "gg.png", "backgroundsAndOther/sq.png", "backgroundsAndOther/roomTwo.png"});
         roomsAndData.put("GameStateTwo", new String[]{"backgroundsAndOther/roomTwo.png", "gg.png", "backgroundsAndOther/sq.png"});
         roomsAndData.put("GameStateThree", new String[]{"backgroundsAndOther/roomThree.png", "gg.png", "backgroundsAndOther/sq.png"});
         roomsAndData.put("GameMenu", new String[]{"backgroundsAndOther/backgroundStart.jpg", "backgroundsAndOther/btnlvlone.png", "backgroundsAndOther/btnlvltwo.png"});
         roomsAndData.put("StartAnimation", new String[]{"backgroundsAndOther/logo.jpg"});
+        roomsAndData.put("Profiles", new String[]{"backgroundsAndOther/BackgroundProfiles.png"});
+        roomsAndData.put("Settings", new String[]{"backgroundsAndOther/BackgroundProfiles.png", "backgroundsAndOther/sound.png", "backgroundsAndOther/notSound.png", "backgroundsAndOther/back.png"});
     }
+
 
 }
