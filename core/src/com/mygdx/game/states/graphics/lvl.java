@@ -34,8 +34,16 @@ public class lvl{
         switch (nameOfRoom){
             case ("GameStateOne"):
                 GameState.backgroundRoom = new Texture(roomsAndData.get(nameOfRoom)[0]);
-                GameState.texture = new Texture(roomsAndData.get(nameOfRoom)[1]);
+                GameState.gg = new Texture(roomsAndData.get(nameOfRoom)[1]);
+                GameState.gg1 = new Texture(roomsAndData.get(nameOfRoom)[10]);
                 GameState.btn = new Texture(roomsAndData.get(nameOfRoom)[2]);
+                GameState.btnRight = new Texture(roomsAndData.get(nameOfRoom)[3]);
+                GameState.btnDown = new Texture(roomsAndData.get(nameOfRoom)[4]);
+                GameState.btnUp = new Texture(roomsAndData.get(nameOfRoom)[5]);
+                GameState.btnLeft = new Texture(roomsAndData.get(nameOfRoom)[6]);
+                GameState.btnTake = new Texture(roomsAndData.get(nameOfRoom)[7]);
+                GameState.table = new Texture(roomsAndData.get(nameOfRoom)[8]);
+                GameState.back = new Texture(roomsAndData.get(nameOfRoom)[9]);
                 GameState.backgroundRoomTwo = new Texture(roomsAndData.get(nameOfRoom)[3]);
                 Objects doorUp = new Objects((int) (Mindgames.width*0.732), 0,
                         (int) (Mindgames.width*0.79), (int) (Mindgames.height*0.1962),
@@ -43,8 +51,10 @@ public class lvl{
                 Objects doorLeft =  new Objects(0, (int) (Mindgames.height*0.8348),
                         (int) (Mindgames.width*0.0214592), (int) (Mindgames.height*0.671),
                         new String[][]{new String[]{"out-left"}});
-                Objects sofa =  new Objects((int) (Mindgames.width*0.615), 0,
-                        (int) (Mindgames.width*0.704), (int) (Mindgames.height*0.6917),
+                Objects sofa =  new Objects((int) (Mindgames.width*0.7142),
+                        (int) (Mindgames.height*0.15),
+                        (int) (Mindgames.width*0.73),
+                        (int) (Mindgames.height*0.25),
                         new String[][]{new String[]{"1234"}});
 
                 allObj.put(0, new Objects[]{doorLeft, doorUp, sofa});
@@ -53,7 +63,7 @@ public class lvl{
                 break;
             case ("GameStateTwo"):
                 GameState.backgroundRoom = new Texture(roomsAndData.get(nameOfRoom)[0]);
-                GameState.texture = new Texture(roomsAndData.get(nameOfRoom)[1]);
+                GameState.gg = new Texture(roomsAndData.get(nameOfRoom)[1]);
                 GameState.btn = new Texture(roomsAndData.get(nameOfRoom)[2]);
                 GameState.startX= (int) (Mindgames.width*0.91);
                 GameState.startY= (int) (Mindgames.height*0.23);
@@ -64,7 +74,7 @@ public class lvl{
                 break;
             case("GameStateThree"):
                 GameState.backgroundRoom = new Texture(roomsAndData.get(nameOfRoom)[0]);
-                GameState.texture = new Texture(roomsAndData.get(nameOfRoom)[1]);
+                GameState.gg = new Texture(roomsAndData.get(nameOfRoom)[1]);
                 GameState.btn = new Texture(roomsAndData.get(nameOfRoom)[2]);
                 GameState.startX= (int) (Mindgames.width*0.91);
                 GameState.startY= (int) (Mindgames.height*0.23);
@@ -86,6 +96,7 @@ public class lvl{
                 break;
             case("Profiles"):
                 Profiles.backgroundProfiles = new Texture(roomsAndData.get(nameOfRoom)[0]);
+                Profiles.back = new Texture(roomsAndData.get(nameOfRoom)[1]);
                 break;
             case("Settings"):
                 Settings.background = new Texture(roomsAndData.get(nameOfRoom)[0]);
@@ -97,15 +108,29 @@ public class lvl{
     }
 
     private static void whatIsGraphic(){
-        roomsAndData.put("StartMenuState", new String[]{"backgroundsAndOther/title.png", "backgroundsAndOther/backgroundMenu.jpg",
-                "backgroundsAndOther/ButtonProfiles.png", "backgroundsAndOther/buttonStart.png", "backgroundsAndOther/buttonSettings.png"});
-        roomsAndData.put("GameStateOne", new String[]{"backgroundsAndOther/roomOne.png", "gg.png", "backgroundsAndOther/sq.png", "backgroundsAndOther/roomTwo.png"});
-        roomsAndData.put("GameStateTwo", new String[]{"backgroundsAndOther/roomTwo.png", "gg.png", "backgroundsAndOther/sq.png"});
-        roomsAndData.put("GameStateThree", new String[]{"backgroundsAndOther/roomThree.png", "gg.png", "backgroundsAndOther/sq.png"});
-        roomsAndData.put("GameMenu", new String[]{"backgroundsAndOther/backgroundStart.jpg", "backgroundsAndOther/btnlvlone.png", "backgroundsAndOther/btnlvltwo.png"});
+        roomsAndData.put("StartMenuState", new String[]{"backgroundsAndOther/icons/title.png", "backgroundsAndOther/backgroundMenu.jpg",
+                "backgroundsAndOther/icons/ButtonProfiles.png", "backgroundsAndOther/icons/buttonStart.png", "backgroundsAndOther/icons/buttonSettings.png"});
+        roomsAndData.put("GameStateOne", new String[]{
+                "backgroundsAndOther/roomOne.png",
+                "gg.png",
+                "backgroundsAndOther/icons/sq.png",
+                "backgroundsAndOther/icons/down.png",
+                "backgroundsAndOther/icons/right.png",
+                "backgroundsAndOther/icons/sq.png",
+                "backgroundsAndOther/icons/left.png",
+                "backgroundsAndOther/icons/take.png",
+                "backgroundsAndOther/table.png",
+                "backgroundsAndOther/icons/back.png",
+                "gg1.png"
+        });
+        roomsAndData.put("GameStateTwo", new String[]{"backgroundsAndOther/roomTwo.png",
+                "gg.png", "backgroundsAndOther/icons/sq.png"});
+        roomsAndData.put("GameStateThree", new String[]{"backgroundsAndOther/roomThree.png",
+                "gg.png", "backgroundsAndOther/icons/sq.png"});
+        roomsAndData.put("GameMenu", new String[]{"backgroundsAndOther/backgroundStart.jpg", "backgroundsAndOther/icons/btnlvlone.png", "backgroundsAndOther/icons/btnlvltwo.png"});
         roomsAndData.put("StartAnimation", new String[]{"backgroundsAndOther/logo.jpg"});
-        roomsAndData.put("Profiles", new String[]{"backgroundsAndOther/BackgroundProfiles.png"});
-        roomsAndData.put("Settings", new String[]{"backgroundsAndOther/BackgroundProfiles.png", "backgroundsAndOther/sound.png", "backgroundsAndOther/notSound.png", "backgroundsAndOther/back.png"});
+        roomsAndData.put("Profiles", new String[]{"backgroundsAndOther/BackgroundProfiles.png", "backgroundsAndOther/icons/back.png"});
+        roomsAndData.put("Settings", new String[]{"backgroundsAndOther/BackgroundProfiles.png", "backgroundsAndOther/icons/sound.png", "backgroundsAndOther/icons/notSound.png", "backgroundsAndOther/icons/back.png"});
     }
 
 

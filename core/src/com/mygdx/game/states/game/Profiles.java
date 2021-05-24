@@ -12,7 +12,7 @@ import com.mygdx.game.states.graphics.lvl;
 
 public class Profiles extends State {
 
-    public static Texture backgroundProfiles;
+    public static Texture backgroundProfiles, back;
 
     public Profiles(GameStateManager gms) {
         super(gms);
@@ -21,15 +21,13 @@ public class Profiles extends State {
 
     @Override
     protected void handleInput() {
-        Gdx.input.setInputProcessor(new InputAdapter() {
-            public boolean touchDown(int x,int y,int pointer,int button) {
-
-                if (x > Mindgames.width / 4 && x < Mindgames.width /2) {
+        if(Gdx.input.justTouched()){
+            int x =Gdx.input.getX();
+            int y = Gdx.input.getY();
+            if(x<100 && y<100){
                     gms.set(new StartMenuState(gms));
                 }
-                return false;
             }
-        });
 
     }
 

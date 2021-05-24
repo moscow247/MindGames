@@ -30,13 +30,7 @@ public class Settings extends State {
                     y < (float) (1.85*Mindgames.height/5)+((float) (Mindgames.height*0.18518))){
                 prefs.putInteger("music", Math.abs(prefs.getInteger("music", 0)-1));
                 prefs.flush();
-                if (prefs.getInteger("music", 1)==1 && !StartMenuState.isPlaying) {
-                    StartMenuState.music.play();
-                    StartMenuState.isPlaying = true;
-                }else{
-                    StartMenuState.music.pause();
-                    StartMenuState.isPlaying = false;
-                }
+                StartMenuState.playMusic();
             }
             if(x<100 && y<100){
                 gms.set(new StartMenuState(gms));
@@ -70,5 +64,8 @@ public class Settings extends State {
         sound.dispose();
         notSound.dispose();
         back.dispose();
+        if(!Mindgames.isPlaying){
+            StartMenuState.music.dispose();
+        }
     }
 }

@@ -18,18 +18,16 @@ import static com.mygdx.game.Mindgames.prefs;
 public class StartMenuState extends State {
     public static Music music;
     public static Texture background, playButton, buttonProfiles, title, buttonSettings;
-    public static boolean isPlaying = false;
+
+    {
+        music = Gdx.audio.newMusic(Gdx.files.internal("music/music.mp3"));
+        playMusic();
+    }
 
     public StartMenuState(GameStateManager gms) {
         super(gms);
         lvl.whatsAboutGraphic("StartMenuState");
-        music = Gdx.audio.newMusic(Gdx.files.internal("music/music.mp3"));
-        if (!StartMenuState.isPlaying && prefs.getInteger("music", 0)==1) {
-            music.play();
-            music.setLooping(true);
-            isPlaying = true;
-        }else{
-        }
+
     }
 
     @Override
@@ -79,7 +77,6 @@ public class StartMenuState extends State {
         sb.draw(buttonSettings, 35*(Mindgames.width /60) - (buttonProfiles.getWidth() /2), 5 * (Mindgames.height /20) - (buttonProfiles.getHeight() /2));
         sb.draw(title, Mindgames.width/40, 15*Mindgames.height/20);
         sb.end();
-        System.out.println(StartMenuState.isPlaying);
     }
 
     @Override
@@ -88,6 +85,18 @@ public class StartMenuState extends State {
         buttonProfiles.dispose();
         background.dispose();
         playButton.dispose();
-//        music.dispose();
+        if(!music.isPlaying()){
+            music.dispose();
+        }
+    }
+
+    public static void playMusic() {
+        if (prefs.getInteger("music", 1)==1 && !Mindgames.isPlaying) {
+            StartMenuState.music.play();
+            Mindgames.isPlaying = true;
+        }else{
+            StartMenuState.music.stop();
+            Mindgames.isPlaying = false;
+        }
     }
 }
