@@ -17,7 +17,7 @@ import static com.mygdx.game.Mindgames.prefs;
 
 public class GameState extends State {
     public static Texture gg, gg1;
-    private People me = new People((int)(Mindgames.width*0.2), Mindgames.height/2, 12, gg, false);
+    private People me = new People((int)(Mindgames.width*0.2), Mindgames.height/2, 12, gg, prefs.getBoolean("isBusy", false));
     private Objects box = new Objects((int) (Mindgames.width*0.457), (int) (Mindgames.height*0.3055),
             (int) (Mindgames.width*0.568), (int) (Mindgames.height*0.09259),null, new Integer[][]{new  Integer[]{1}});
     public static Texture backgroundRoom, backgroundRoomTwo, btnUp, btnDown,
@@ -72,8 +72,8 @@ public class GameState extends State {
 
             }
 
-            if((lvl.allObj.get(0)[1]).isNear(me, 75) && numberOfRoom==0 && me.isBusy()){
-                gms.push(new GameWait(gms, 1));
+            if((lvl.allObj.get(0)[1]).isNear(me, 75) && numberOfRoom==0 && prefs.getBoolean("isBusy", false)){
+                gms.push(new GameWait(gms, 2));
             }
 
             if((lvl.allObj.get(0)[2].isNear(me, (int) (Mindgames.height*0.067))) ||
@@ -90,6 +90,13 @@ public class GameState extends State {
             if(numberOfRoom == 1) {
                 if ((lvl.allObj.get(1)[0]).isNear(me, 50)) {
                     gms.set(new GameWait(gms, 0));
+                }
+            }
+
+            if(numberOfRoom == 2) {
+                if (me.getCurX() < Mindgames.width*0.44 && me.getCurX() > Mindgames.width*0.22
+                        && me.getCurY()>Mindgames.height*0.32 && me.getCurY()<Mindgames.height*0.53) {
+                    gms.push(new FinishGame(gms));
                 }
             }
 
@@ -131,13 +138,28 @@ public class GameState extends State {
             sb.draw(btnTake, (float)(Mindgames.width*0.76), (float)(Mindgames.height*0.1),(float) (Mindgames.width*0.1), (float) (Mindgames.height*0.13));
             if(takeFlag==1){
                 sb.draw(table, 0, 0, (float) (Mindgames.width), (float) (Mindgames.height));
-                sb.draw(back, (float) (Mindgames.width*0.9), (float) (Mindgames.height*0.9), (float) (Mindgames.width*0.098), (float) (Mindgames.height*0.09836));
+                sb.draw(back, (float) (Mindgames.width*0.9),
+                        (float) (Mindgames.height*0.9),
+                        (float) (Mindgames.width*0.098),
+                        (float) (Mindgames.height*0.09836));
                 for (int i = 0; i < lvl.allObj.get(0)[who].getWhatIn()[0].length; i++) {
+                    if(!prefs.getBoolean("isBusy") || (lvl.allObj.get(0)[who].getWhatIn()[0][i]!=4)){
                     sb.draw(lvl.items[lvl.allObj.get(0)[who].getWhatIn()[0][i]].getImg(),
                             lvl.items[lvl.allObj.get(0)[who].getWhatIn()[0][i]].getCurX1(),
                             lvl.items[lvl.allObj.get(0)[who].getWhatIn()[0][i]].getCurY1(),
-                            (float) (Mindgames.width*0.049),
-                            (float) (Mindgames.height*0.06));
+                            (float) (Mindgames.width*0.149),
+                            (float) (Mindgames.height*0.16));
+                    }
+                    System.out.println(lvl.items[4].getCurX1());
+                    System.out.println(lvl.items[4].getCurY1());
+                }
+                if(Gdx.input.isTouched()){
+                    int x =Gdx.input.getX();
+                    int y = Gdx.input.getY();;
+                    if(lvl.items[4].isHere(x,Mindgames.height-y)) {
+                        prefs.putBoolean("isBusy", true);
+                        prefs.flush();
+                    }
                 }
             }
             if(Gdx.input.isTouched()){
@@ -150,9 +172,8 @@ public class GameState extends State {
             }
         }
         sb.end();
-        System.out.println(me.getCurX());
-        System.out.println(me.getCurY());
-        System.out.println(numberOfRoom);
+
+        System.out.println(prefs.getBoolean("isBusy", false));
     }
 
     @Override

@@ -37,9 +37,9 @@ public class lvl{
 //        GameState.backgroundRoom = new Texture("backgroundsAndOther/roomOne.jpg");
         Objects book1 = new Objects(
                 (int)(Mindgames.width*0.147),
-                (int)(Mindgames.height*0.196),
+                (int)(Mindgames.height*0.496),
                 (int)(Mindgames.width*0.196),
-                (int)(Mindgames.height*0.262),
+                (int)(Mindgames.height*0.562),
                 new Texture("backgroundsAndOther/obj/book1.png"),
                 new  Integer[][]{new  Integer[]{}}
         );
@@ -55,18 +55,18 @@ public class lvl{
 
         Objects grib = new Objects(
                 (int)(Mindgames.width*0.347),
-                (int)(Mindgames.height*0.196),
+                (int)(Mindgames.height*0.396),
                 (int)(Mindgames.width*0.396),
-                (int)(Mindgames.height*0.262),
+                (int)(Mindgames.height*0.462),
                 new Texture("backgroundsAndOther/obj/grib.png"),
                 new  Integer[][]{new  Integer[]{}}
         );
 
         Objects cat = new Objects(
                 (int)(Mindgames.width*0.447),
-                (int)(Mindgames.height*0.196),
+                (int)(Mindgames.height*0.216),
                 (int)(Mindgames.width*0.496),
-                (int)(Mindgames.height*0.262),
+                (int)(Mindgames.height*0.282),
                 new Texture("backgroundsAndOther/obj/cat.png"),
                 new  Integer[][]{new  Integer[]{}}
         );
@@ -74,18 +74,18 @@ public class lvl{
 
         Objects lattop = new Objects(
                 (int)(Mindgames.width*0.547),
-                (int)(Mindgames.height*0.196),
+                (int)(Mindgames.height*0.106),
                 (int)(Mindgames.width*0.596),
-                (int)(Mindgames.height*0.262),
+                (int)(Mindgames.height*0.172),
                 new Texture("backgroundsAndOther/obj/lattop.png"),
                 new  Integer[][]{new  Integer[]{}}
         );
 
         Objects paper1 = new Objects(
                 (int)(Mindgames.width*0.647),
-                (int)(Mindgames.height*0.196),
+                (int)(Mindgames.height*0.796),
                 (int)(Mindgames.width*0.696),
-                (int)(Mindgames.height*0.262),
+                (int)(Mindgames.height*0.862),
                 new Texture("backgroundsAndOther/obj/paper1.png"),
                 new  Integer[][]{new  Integer[]{2}}
         );
@@ -160,9 +160,15 @@ public class lvl{
                 GameState.backgroundRoom = new Texture(roomsAndData.get(nameOfRoom)[0]);
                 GameState.gg = new Texture(roomsAndData.get(nameOfRoom)[1]);
                 GameState.btn = new Texture(roomsAndData.get(nameOfRoom)[2]);
-                GameState.startX= (int) (Mindgames.width*0.91);
-                GameState.startY= (int) (Mindgames.height*0.23);
-
+                GameState.startX= (int) (Mindgames.width*0.834);
+                GameState.startY= (int) (Mindgames.height*0.1);
+                Objects car =  new Objects((int) (Mindgames.width*0.24),
+                        (int) (Mindgames.height*0.33),
+                        (int) (Mindgames.width*0.44),
+                        (int) (Mindgames.height*0.52),null,
+                        new  Integer[][]{new  Integer[]{}});
+                allObj.put(2, new Objects[] {car});
+                break;
             case ("StartMenuState"):
                 StartMenuState.background = new Texture(roomsAndData.get(nameOfRoom)[1]);
                 StartMenuState.playButton = new Texture(roomsAndData.get(nameOfRoom)[3]);
@@ -174,6 +180,7 @@ public class lvl{
                 GameMenu.background = new Texture(roomsAndData.get(nameOfRoom)[0]);
                 GameMenu.buttonFirstLvl = new Texture(roomsAndData.get(nameOfRoom)[1]);
                 GameMenu.buttonSecondLvl = new Texture(roomsAndData.get(nameOfRoom)[2]);
+                GameMenu.back = new Texture(roomsAndData.get(nameOfRoom)[3]);
                 break;
             case("StartAnimation"):
                 StartAnimation.logo = new Texture(roomsAndData.get(nameOfRoom)[0]);
@@ -209,7 +216,7 @@ public class lvl{
                 "backgroundsAndOther/icons/ButtonProfiles.png", "backgroundsAndOther/icons/buttonStart.png", "backgroundsAndOther/icons/buttonSettings.png"});
         roomsAndData.put("GameStateOne", new String[]{
                 "backgroundsAndOther/roomOne.png",
-                "gg.png",
+                Mindgames.gg[prefs.getInteger("gg", 0)][0],
                 "backgroundsAndOther/icons/sq.png",
                 "backgroundsAndOther/icons/down.png",
                 "backgroundsAndOther/icons/right.png",
@@ -218,14 +225,18 @@ public class lvl{
                 "backgroundsAndOther/icons/take.png",
                 "backgroundsAndOther/table.png",
                 "backgroundsAndOther/icons/back.png",
-                "gg1.png",
+                Mindgames.gg[prefs.getInteger("gg", 0)][1],
                 "backgroundsAndOther/icons/sq1.png"
         });
         roomsAndData.put("GameStateTwo", new String[]{"backgroundsAndOther/roomTwo.png",
                 "gg.png", "backgroundsAndOther/icons/sq.png"});
-        roomsAndData.put("GameStateThree", new String[]{"backgroundsAndOther/roomThree.png",
+        roomsAndData.put("GameStateThree", new String[]{"backgroundsAndOther/street.png",
                 "gg.png", "backgroundsAndOther/icons/sq.png"});
-        roomsAndData.put("GameMenu", new String[]{"backgroundsAndOther/backgroundStart.jpg", "backgroundsAndOther/icons/btnlvlone.png", "backgroundsAndOther/icons/btnlvltwo.png"});
+        roomsAndData.put("GameMenu", new String[]{"backgroundsAndOther/backgroundStart.jpg",
+                "backgroundsAndOther/icons/btnlvlone.png",
+                "backgroundsAndOther/icons/btnlvltwo.png",
+                "backgroundsAndOther/icons/back.png"
+        });
         roomsAndData.put("StartAnimation", new String[]{"backgroundsAndOther/logo.jpg"});
         roomsAndData.put("Profiles", new String[]{"backgroundsAndOther/BackgroundProfiles.png", "backgroundsAndOther/icons/back.png", "backgroundsAndOther/face.png"});
         roomsAndData.put("Settings", new String[]{"backgroundsAndOther/BackgroundProfiles.png", "backgroundsAndOther/icons/sound.png", "backgroundsAndOther/icons/notSound.png", "backgroundsAndOther/icons/back.png"});
