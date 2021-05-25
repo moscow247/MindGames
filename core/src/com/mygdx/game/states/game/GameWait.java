@@ -31,7 +31,7 @@ public class GameWait extends State {
         sb.begin();
         sb.draw(backgroundProfiles, 0, 0, Mindgames.width, Mindgames.height);
         sb.end();
-        gms.set(new GameState(gms, room));
+        gms.push(new GameState(gms, room));
 
     }
 

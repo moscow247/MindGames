@@ -19,12 +19,12 @@ public class GameState extends State {
     public static Texture gg, gg1;
     private People me = new People((int)(Mindgames.width*0.2), Mindgames.height/2, 12, gg, false);
     private Objects box = new Objects((int) (Mindgames.width*0.457), (int) (Mindgames.height*0.3055),
-            (int) (Mindgames.width*0.568), (int) (Mindgames.height*0.09259), new String[][]{new String[]{"book"}});
+            (int) (Mindgames.width*0.568), (int) (Mindgames.height*0.09259),null, new Integer[][]{new  Integer[]{1}});
     public static Texture backgroundRoom, backgroundRoomTwo, btnUp, btnDown,
             btnLeft, btnRight, btn, btnTake, back, table,sq;
     public static int startY, startX;
 
-    private int numberOfRoom, flag=1, SMNear=0,takeFlag=0, nav=0;
+    private int numberOfRoom, flag=1, SMNear=0,takeFlag=0, nav=0, who;
 
 
 
@@ -35,7 +35,6 @@ public class GameState extends State {
         this.numberOfRoom = numberOfRoom;
         if(Mindgames.wereHere == 0){
             flag=0;
-            Mindgames.wereHere=1;
         }
         lvl.whatsAboutGraphic(GameMenu.namesAndNumbers[numberOfRoom]);
         me.setCurX(startX);
@@ -71,12 +70,22 @@ public class GameState extends State {
             if((lvl.allObj.get(0)[0]).isNear(me, 50)){
                 gms.set(new GameWait(gms, 1));
 
-            }else if((lvl.allObj.get(0)[1]).isNear(me, 50)){
-                gms.set(new GameWait(gms, 2));
             }
-            if((lvl.allObj.get(0)[2].isNear(me, 50))){
+
+            if((lvl.allObj.get(0)[1]).isNear(me, 75) && numberOfRoom==0 && me.isBusy()){
+                gms.push(new GameWait(gms, 1));
+            }
+
+            if((lvl.allObj.get(0)[2].isNear(me, (int) (Mindgames.height*0.067))) ||
+                    (lvl.allObj.get(0)[3].isNear(me, (int) (Mindgames.height*0.067)))){
                 SMNear=1;
             }else SMNear=0;
+
+            if((lvl.allObj.get(0)[3].isNear(me, (int) (Mindgames.height*0.067)))){
+                who=3;
+            }else if((lvl.allObj.get(0)[2].isNear(me, (int) (Mindgames.height*0.067)))){
+                who=2;
+            }
 
             if(numberOfRoom == 1) {
                 if ((lvl.allObj.get(1)[0]).isNear(me, 50)) {
@@ -93,7 +102,11 @@ public class GameState extends State {
     public void update(float dt) {
         handleInput();
             if (Gdx.input.isTouched()) {
-                flag=1;
+                int x =Gdx.input.getX();
+                int y = Gdx.input.getY();
+                if(y < (Mindgames.height * 0.1) && x > (Mindgames.width * 0.95))flag=1;
+                prefs.putBoolean("first", false);
+                prefs.flush();
             }
         }
 
@@ -112,7 +125,6 @@ public class GameState extends State {
         sb.draw(btnRight, (float) (Mindgames.width * 0.2), (float) (Mindgames.height * 0.05), (float) (Mindgames.width * 0.09), (float) (Mindgames.height * 0.13));
         sb.draw(btnUp, (float) (Mindgames.width*0.2), (float) (Mindgames.height*0.2), (float) (Mindgames.width*0.09), (float) (Mindgames.height*0.11));
         if (flag == 0 && numberOfRoom==0 && prefs.getBoolean("first", true)) {
-            prefs.putBoolean("first", false);
             sb.draw(sq, 0, 0, (float) (Mindgames.width), (float) (Mindgames.height));
         }
         if(SMNear == 1){
@@ -120,6 +132,13 @@ public class GameState extends State {
             if(takeFlag==1){
                 sb.draw(table, 0, 0, (float) (Mindgames.width), (float) (Mindgames.height));
                 sb.draw(back, (float) (Mindgames.width*0.9), (float) (Mindgames.height*0.9), (float) (Mindgames.width*0.098), (float) (Mindgames.height*0.09836));
+                for (int i = 0; i < lvl.allObj.get(0)[who].getWhatIn()[0].length; i++) {
+                    sb.draw(lvl.items[lvl.allObj.get(0)[who].getWhatIn()[0][i]].getImg(),
+                            lvl.items[lvl.allObj.get(0)[who].getWhatIn()[0][i]].getCurX1(),
+                            lvl.items[lvl.allObj.get(0)[who].getWhatIn()[0][i]].getCurY1(),
+                            (float) (Mindgames.width*0.049),
+                            (float) (Mindgames.height*0.06));
+                }
             }
             if(Gdx.input.isTouched()){
                 int x =Gdx.input.getX();
@@ -133,6 +152,7 @@ public class GameState extends State {
         sb.end();
         System.out.println(me.getCurX());
         System.out.println(me.getCurY());
+        System.out.println(numberOfRoom);
     }
 
     @Override
