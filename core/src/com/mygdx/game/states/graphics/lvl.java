@@ -148,6 +148,7 @@ public class lvl{
             case ("GameStateTwo"):
                 GameState.backgroundRoom = new Texture(roomsAndData.get(nameOfRoom)[0]);
                 GameState.gg = new Texture(roomsAndData.get(nameOfRoom)[1]);
+                GameState.gg1 = new Texture(roomsAndData.get(nameOfRoom)[3]);
                 GameState.btn = new Texture(roomsAndData.get(nameOfRoom)[2]);
                 GameState.startX= (int) (Mindgames.width*0.91);
                 GameState.startY= (int) (Mindgames.height*0.23);
@@ -159,6 +160,7 @@ public class lvl{
             case("GameStateThree"):
                 GameState.backgroundRoom = new Texture(roomsAndData.get(nameOfRoom)[0]);
                 GameState.gg = new Texture(roomsAndData.get(nameOfRoom)[1]);
+                GameState.gg1 = new Texture(roomsAndData.get(nameOfRoom)[3]);
                 GameState.btn = new Texture(roomsAndData.get(nameOfRoom)[2]);
                 GameState.startX= (int) (Mindgames.width*0.834);
                 GameState.startY= (int) (Mindgames.height*0.1);
@@ -228,10 +230,18 @@ public class lvl{
                 Mindgames.gg[prefs.getInteger("gg", 0)][1],
                 "backgroundsAndOther/icons/sq1.png"
         });
-        roomsAndData.put("GameStateTwo", new String[]{"backgroundsAndOther/roomTwo.png",
-                "gg.png", "backgroundsAndOther/icons/sq.png"});
-        roomsAndData.put("GameStateThree", new String[]{"backgroundsAndOther/street.png",
-                "gg.png", "backgroundsAndOther/icons/sq.png"});
+        roomsAndData.put("GameStateTwo", new String[]{
+                "backgroundsAndOther/roomTwo.png",
+                Mindgames.gg[prefs.getInteger("gg", 0)][0],
+                "backgroundsAndOther/icons/sq.png",
+                Mindgames.gg[prefs.getInteger("gg", 0)][1]
+        });
+        roomsAndData.put("GameStateThree", new String[]{
+                "backgroundsAndOther/street.png",
+                Mindgames.gg[prefs.getInteger("gg", 0)][0],
+                "backgroundsAndOther/icons/sq.png",
+                Mindgames.gg[prefs.getInteger("gg", 0)][1]
+        });
         roomsAndData.put("GameMenu", new String[]{"backgroundsAndOther/backgroundStart.jpg",
                 "backgroundsAndOther/icons/btnlvlone.png",
                 "backgroundsAndOther/icons/btnlvltwo.png",
